@@ -6,21 +6,47 @@ import SEO from '../components/seo'
 
 export const query = graphql`
   query vorstandPageQuery {
-    elfer: allSanityPerson(filter: { rollen: { eq: "elferat" } }) {
+    schriftfuehrer: allSanityPerson(
+      filter: { rollen: { eq: "schriftführer" } }
+    ) {
       edges {
         node {
           id
           name
-          rollen
         }
       }
     }
-    rest: allSanityPerson(filter: { rollen: { ne: "elferat" } }) {
+    president: allSanityPerson(filter: { rollen: { eq: "president" } }) {
       edges {
         node {
           id
           name
-          rollen
+        }
+      }
+    }
+    vizePresident: allSanityPerson(
+      filter: { rollen: { eq: "vizepresident" } }
+    ) {
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+    kassierer: allSanityPerson(filter: { rollen: { eq: "kassierer" } }) {
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+    elferrat: allSanityPerson(filter: { rollen: { eq: "elferrat" } }) {
+      edges {
+        node {
+          id
+          name
         }
       }
     }
@@ -37,20 +63,35 @@ const vorstandPage = ({ data }) => {
       />
       <h2>Der Vorstand</h2>
 
-      {data.rest.edges.map(e => (
-        <div key={`${e.node.id}`}>
-          <h3 key={`${e.node.id}-rollen`}>{e.node.rollen}</h3>
-          <p key={`${e.node.id}-name`}>{e.node.name}</p>
-        </div>
-      ))}
+      <div>
+        <h3>Präsident</h3>
+        <p>{data.president.edges[0].node.name}</p>
+      </div>
 
       <div>
-        <h3>{data.elfer.edges[0].node.rollen}</h3>
-        {data.elfer.edges.map(e => (
-          <ul key={`${e.node.id}`}>
-            <li key={`${e.node.id}-name`}>{e.node.name}</li>
-          </ul>
-        ))}
+        <h3>Vizepräsident</h3>
+        <p>{data.vizePresident.edges[0].node.name}</p>
+      </div>
+
+      <div>
+        <h3>Kassiererin</h3>
+        <p>{data.kassierer.edges[0].node.name}</p>
+      </div>
+
+      <div>
+        <h3>Schriftführer</h3>
+        <p>{data.schriftfuehrer.edges[0].node.name}</p>
+      </div>
+
+      <div>
+        <h3>Elferräte</h3>
+        <p>
+          {data.elferrat.edges.map(elfer => (
+            <React.Fragment key={elfer.node.id}>
+              {elfer.node.name} <br />
+            </React.Fragment>
+          ))}
+        </p>
       </div>
     </Layout>
   )

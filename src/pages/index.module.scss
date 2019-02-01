@@ -1,0 +1,35 @@
+@import '../styles/base';
+
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+
+.brauchtumInSchönsterForm {
+  width: 60vw;
+  margin-bottom: 3rem;
+}
+
+h2 {
+  color: $color-secondary;
+  margin-bottom: 7rem;
+
+  span {
+    color: $color-primary;
+    margin-top: -1rem;
+  }
+}
+
+.unserVerein {
+  display: flex;
+  flex-direction: column;
+}
+
+.figurenImagesBox {
+  display: inline-block;
+  margin: 0 auto;
+  align-self: center;
+}
+
+img {
+  width: calc(33vw - 2rem);
+  height: auto;
+}

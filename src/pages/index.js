@@ -1,8 +1,8 @@
 import React from 'react'
-
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import styles from './index.module.scss'
 
 export const query = graphql`
   query indexPageQuery {
@@ -38,25 +38,29 @@ const indexPage = ({ data }) => {
     <Layout>
       <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
       <section>
-        <p>Brauchtum in seiner schönsten Form erleben</p>
+        <p className={styles.brauchtumInSchönsterForm}>
+          Brauchtum in seiner schönsten Form erleben
+        </p>
 
         <h2>
           HEU !<br />
           <span>LICHER !</span>
         </h2>
       </section>
-      <section>
+      <section className={styles.unserVerein}>
         <h3>
           unser <br />
           <span>Verein</span>
         </h3>
 
-        {data.figurenVerein.edges.map(figur => (
-          <img
-            key={`${figur.node.id}-image`}
-            src={`https://cdn.sanity.io/${figur.node.bild.asset.path}`}
-          />
-        ))}
+        <div className={styles.figurenImagesBox}>
+          {data.figurenVerein.edges.map(figur => (
+            <img
+              key={`${figur.node.id}-image`}
+              src={`https://cdn.sanity.io/${figur.node.bild.asset.path}`}
+            />
+          ))}
+        </div>
 
         <button>Mehr erfahren</button>
       </section>
@@ -69,7 +73,7 @@ const indexPage = ({ data }) => {
         {data.termine.edges.map(termin => (
           <div key={`${termin.node.id}`}>
             <p key={`${termin.node.id}-date`}>{termin.node.date}</p>
-            <h2 key={`${termin.node.id}-title`}> {termin.node.title} </h2>
+            <h4 key={`${termin.node.id}-title`}> {termin.node.title} </h4>
           </div>
         ))}
 

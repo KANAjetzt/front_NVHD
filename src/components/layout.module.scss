@@ -4,6 +4,8 @@
 $color-primary: var(--color-primary);
 $color-grey-medium: var(--color-grey-medium);
 
+$base-font: var(--base-font);
+
 *,
 *::before,
 *::after {
@@ -20,17 +22,18 @@ html {
 .base {
   margin: 0 auto;
   padding: 0 1rem 0 1rem;
+  max-width: 1440px;
 }
 
 p {
   font-size: 1.8rem;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: $base-font;
   color: $color-grey-medium;
 }
 
 h2 {
   font-size: 6.4rem;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: $base-font;
   font-weight: 700;
   line-height: 1;
 
@@ -43,7 +46,7 @@ h2 {
 
 h3 {
   font-size: 4.7rem;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: $base-font;
   font-weight: 700;
   line-height: 0.9;
   color: $color-primary;

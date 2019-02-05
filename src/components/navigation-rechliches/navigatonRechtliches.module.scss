@@ -1,0 +1,22 @@
+@import '../../styles/base';
+
+$color-secondary: var(--color-secondary);
+
+$base-font: var(--base-font);
+
+.linkBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+
+  li {
+    list-style: none;
+    padding: 0 1rem;
+    a {
+      font-family: $base-font;
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: $color-secondary;
+    }
+  }
+}

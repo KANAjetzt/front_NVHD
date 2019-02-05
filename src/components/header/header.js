@@ -48,7 +48,7 @@ class Header extends React.Component {
             }
           />
         </button>
-        <Navigation showMenu={this.state.showMenu} />
+        <Navigation showMenu={this.state.showMenu} style={'header'} />
       </header>
     )
   }

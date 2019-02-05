@@ -63,7 +63,8 @@ const kontaktPage = ({ data }) => {
     <Layout>
       <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
       <h2>
-        dein <span>Konakt</span>
+        dein <br />
+        <span>Kontakt</span>
       </h2>
 
       <div>

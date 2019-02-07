@@ -17,6 +17,7 @@ $base-font: var(--base-font);
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  font-family: $base-font;
 }
 
 .base {
@@ -53,5 +54,15 @@ h3 {
 
   span {
     font-size: 9.4rem;
+  }
+}
+
+section {
+  padding: 4rem 0;
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+  &:first-of-type {
+    padding: 0;
   }
 }

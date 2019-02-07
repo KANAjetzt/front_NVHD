@@ -9,15 +9,12 @@ import Heulicher from '../svg/heulicher'
 class Navigation extends React.Component {
   checkStyle = styleClass => {
     if (this.props.style === 'header') {
-      console.log(headerStyles[styleClass])
       return headerStyles[styleClass]
     }
-    console.log(footerStyles[styleClass])
     return footerStyles[styleClass]
   }
 
   render() {
-    console.log(this.props)
     return (
       <nav
         className={

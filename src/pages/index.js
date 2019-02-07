@@ -3,6 +3,8 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import styles from './index.module.scss'
+import BtnCta from '../components/Btn-Cta/btnCta'
+import ImageCompVereinsfiguren from '../components/image-comp-Vereinsfiguren/imageCompVereinsfiguren'
 
 export const query = graphql`
   query indexPageQuery {
@@ -32,8 +34,6 @@ export const query = graphql`
 `
 
 const indexPage = ({ data }) => {
-  console.log(data)
-
   return (
     <Layout>
       <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
@@ -53,16 +53,9 @@ const indexPage = ({ data }) => {
           <span>Verein</span>
         </h3>
 
-        <div className={styles.figurenImagesBox}>
-          {data.figurenVerein.edges.map(figur => (
-            <img
-              key={`${figur.node.id}-image`}
-              src={`https://cdn.sanity.io/${figur.node.bild.asset.path}`}
-            />
-          ))}
-        </div>
+        <ImageCompVereinsfiguren />
 
-        <button>Mehr erfahren</button>
+        <BtnCta>Mehr erfahren</BtnCta>
       </section>
       <section>
         <h3>
@@ -77,7 +70,7 @@ const indexPage = ({ data }) => {
           </div>
         ))}
 
-        <button>alle Termine</button>
+        <BtnCta>alle Termine</BtnCta>
       </section>
       <section>
         <h3>
@@ -90,7 +83,7 @@ const indexPage = ({ data }) => {
           mal wissen wie es unter einer Maske aussieht?
         </p>
 
-        <button>schreib uns</button>
+        <BtnCta>schreib uns</BtnCta>
       </section>
     </Layout>
   )

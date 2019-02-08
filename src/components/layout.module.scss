@@ -20,6 +20,10 @@ html {
   font-family: $base-font;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .base {
   margin: 0 auto;
   padding: 0 1rem 0 1rem;
@@ -51,10 +55,17 @@ h3 {
   font-weight: 700;
   line-height: 0.9;
   color: $color-primary;
+  margin-bottom: 5rem;
 
   span {
     font-size: 9.4rem;
   }
+}
+
+figcaption {
+  font-family: $base-font;
+  color: $color-grey-medium;
+  font-size: 1.6rem;
 }
 
 section {

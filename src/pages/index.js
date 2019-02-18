@@ -1,37 +1,10 @@
 import React from 'react'
-import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import styles from './index.module.scss'
 import BtnCta from '../components/Btn-Cta/btnCta'
 import ImageCompVereinsfiguren from '../components/image-comp-Vereinsfiguren/imageCompVereinsfiguren'
-
-export const query = graphql`
-  query indexPageQuery {
-    figurenVerein: allSanityFigur(filter: { einsatz: { eq: "verein" } }) {
-      edges {
-        node {
-          id
-          name
-          bild {
-            asset {
-              path
-            }
-          }
-        }
-      }
-    }
-    termine: allSanityTermin {
-      edges {
-        node {
-          id
-          date
-          title
-        }
-      }
-    }
-  }
-`
+import Termine from '../components/termine/termine'
 
 const indexPage = ({ data }) => {
   return (
@@ -63,12 +36,7 @@ const indexPage = ({ data }) => {
           <span>2019</span>
         </h3>
 
-        {data.termine.edges.map(termin => (
-          <div key={`${termin.node.id}`}>
-            <p key={`${termin.node.id}-date`}>{termin.node.date}</p>
-            <h4 key={`${termin.node.id}-title`}> {termin.node.title} </h4>
-          </div>
-        ))}
+        <Termine />
 
         <BtnCta>alle Termine</BtnCta>
       </section>

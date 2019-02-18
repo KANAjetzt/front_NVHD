@@ -4,9 +4,7 @@ export default class Termin extends Component {
   formatDate = date => {
     let newDate = date.split('-')
     newDate = newDate.slice(1, 3)
-    console.log(newDate)
-    newDate = newDate.splice(1, 0, `${newDate.splice(0, 1)}`)
-    console.log(newDate)
+    newDate.splice(0, 1, `${newDate.splice(1, 1, newDate[0])}`);
     newDate = newDate.join('.')
     return newDate
   }

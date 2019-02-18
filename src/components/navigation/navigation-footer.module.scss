@@ -1,0 +1,33 @@
+@import '../../styles/base';
+
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+$color-white: var(--color-white);
+$color-grey-dark: var(--color-grey-dark);
+
+$base-font: var(--base-font);
+
+.nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  justify-items: center;
+}
+
+.link {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.link a {
+  font-family: $base-font;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: $color-secondary;
+}
+
+.linkIcon {
+  display: none;
+}

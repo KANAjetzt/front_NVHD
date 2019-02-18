@@ -25,11 +25,9 @@ const ImageCompVereinsfiguren = () => (
       <>
         <div className={styles.figurenImagesBox}>
           {data.figurenVerein.edges.map((figur, figurNum) => (
-            <figure
-              key={`${figur.node.id}-figure`}
-              className={styles[`Figur${figurNum}`]}
-            >
+            <figure className={styles[`Figur${figurNum}`]}>
               <img
+                key={`${figur.node.id}-image`}
                 src={`https://cdn.sanity.io/${figur.node.bild.asset.path}`}
               />
               <figcaption>{figur.node.name}</figcaption>

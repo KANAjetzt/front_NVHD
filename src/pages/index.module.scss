@@ -2,23 +2,72 @@
 
 $color-primary: var(--color-primary);
 $color-secondary: var(--color-secondary);
+$color-white: var(--color-white);
 
 .brauchtumInSchönsterForm {
+  font-size: 1.8rem;
   width: 60vw;
   margin-bottom: 3rem;
 }
 
-h2 {
+.h2 {
+  font-size: 6.4rem;
   color: $color-secondary;
   margin-bottom: 7rem;
 
-  span {
+  &Span {
+    font-size: 6.4rem;
+    font-style: italic;
+    font-weight: 400;
     color: $color-primary;
     margin-top: -1rem;
   }
 }
 
-.unserVerein {
-  display: flex;
-  flex-direction: column;
+.terminSection {
+  background-color: $color-secondary;
+  background-clip: padding-box;
+  color: $color-white;
+  margin-left: -10px;
+  margin-right: -10px;
+
+  p {
+    color: $color-white;
+  }
+
+  & > * {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.kontaktSection {
+  background-color: $color-primary;
+  background-clip: padding-box;
+  color: $color-secondary;
+  margin-left: -10px;
+  margin-right: -10px;
+
+  &P,
+  &H3 {
+    color: $color-secondary;
+  }
+
+  &P {
+    padding-right: 5rem;
+    padding-left: 3rem;
+  }
+
+  &H3 {
+    display: flex;
+    flex-direction: column;
+    font-size: 9.4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    &Span {
+      font-size: 4.7rem;
+      margin-left: 5px;
+    }
+  }
 }

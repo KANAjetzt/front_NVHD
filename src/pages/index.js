@@ -15,9 +15,9 @@ const indexPage = ({ data }) => {
           Brauchtum in seiner schönsten Form erleben
         </p>
 
-        <h2>
+        <h2 className={styles.h2}>
           HEU !<br />
-          <span>LICHER !</span>
+          <span className={styles.h2Span}>LICHER !</span>
         </h2>
       </section>
       <section className={styles.unserVerein}>
@@ -28,9 +28,9 @@ const indexPage = ({ data }) => {
 
         <ImageCompVereinsfiguren />
 
-        <BtnCta>Mehr erfahren</BtnCta>
+        <BtnCta link="/figuren">Mehr erfahren</BtnCta>
       </section>
-      <section>
+      <section className={styles.terminSection}>
         <h3>
           Fasnet <br />
           <span>2019</span>
@@ -38,20 +38,20 @@ const indexPage = ({ data }) => {
 
         <Termine />
 
-        <BtnCta>alle Termine</BtnCta>
+        <BtnCta link="/termine">alle Termine</BtnCta>
       </section>
-      <section>
-        <h3>
+      <section className={styles.kontaktSection}>
+        <h3 className={styles.kontaktSectionH3}>
           Mit <br />
-          <span>machen</span>
+          <span className={styles.kontaktSectionH3Span}>Machen</span>
         </h3>
 
-        <p>
+        <p className={styles.kontaktSectionP}>
           Du hast lust mit uns um die Häuser zu ziehen oder wolltest schon immer
           mal wissen wie es unter einer Maske aussieht?
         </p>
 
-        <BtnCta>schreib uns</BtnCta>
+        <BtnCta link="/kontakt">schreib uns</BtnCta>
       </section>
     </Layout>
   )

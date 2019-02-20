@@ -21,8 +21,9 @@ $BurgerIconGap: 7px;
   align-items: center;
   justify-content: space-between;
   background: var(--color-primary);
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   min-height: 5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 // Burger Nav Icon

@@ -5,21 +5,17 @@ $color-secondary: var(--color-secondary);
 $color-cta: var(--color-cta);
 $color-cta-lighten: var(--color-cta-lighten);
 
+$base-font: var(--base-font);
+
 .btn {
   display: inline-block;
   width: 90%;
   border: none;
   padding: 1.25rem 2rem;
-  margin: 3rem auto 0 auto;
-  text-decoration: none;
+  margin: 4rem auto 0 auto;
   background: $color-cta;
-  color: rgba(255, 255, 255, 0.75);
-  font-family: inherit;
-  font-weight: 700;
-  font-size: 2.4rem;
   cursor: pointer;
   text-align: center;
-  text-transform: uppercase;
   border-radius: 10px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 
@@ -37,5 +33,14 @@ $color-cta-lighten: var(--color-cta-lighten);
 
   &:active {
     transform: scale(0.99);
+  }
+
+  &Text {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.75);
+    font-family: $base-font;
+    font-weight: 700;
+    font-size: 2.4rem;
+    text-transform: uppercase;
   }
 }

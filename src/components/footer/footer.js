@@ -1,12 +1,11 @@
 import { Link, StaticQuery, graphql } from 'gatsby'
-import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './footer.module.scss'
 import Navigation from '../navigation/navigation'
 import NavigationSocial from '../navigation-social/navigationSocial'
 import NavigationRechtliches from '../navigation-rechliches/navigationRechtliches'
 
-class Header extends React.Component {
+class Footer extends React.Component {
   state = {}
 
   render() {
@@ -39,10 +38,7 @@ export default props => (
         }
       }
     `}
-    render={data => <Header data={data} {...props} />}
+    render={data => <Footer data={data} {...props} />}
   />
 )
 
-Header.propTypes = {}
-
-Header.defaultProps = {}

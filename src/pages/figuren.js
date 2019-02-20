@@ -1,27 +1,42 @@
 import React from 'react'
-
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import Figuren from '../components/figuren/figuren'
 
-const figurenPage = () => {
+export const query = graphql`
+  query figurenPageQuery {
+    page: allSanityFigur(filter: { einsatz: { eq: "verein" } }) {
+      edges {
+        node {
+          id
+          name
+          einsatz
+          description
+          bild {
+            _type
+            asset {
+              path
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
+const figurenPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Figuren" keywords={[`Figuren`, `Hardmännle`, `Heulicher`]} />
-      <h2>
-        unsere <span>Figuren</span>
-      </h2>
-      {data.page.edges.map(e => (
-        <div key={`${e.node.id}`}>
-          <img
-            key={`${e.node.id}-image`}
-            src={`https://cdn.sanity.io/${e.node.bild.asset.path}`}
-          />
-          <h3 key={`${e.node.id}-name`}>{e.node.name}</h3>
-          <p key={`${e.node.id}-description`}>{e.node.description}</p>
-        </div>
-      ))}
+      <section>
+        <h2>
+          unsere <br />
+          <span>Figuren</span>
+        </h2>
+
+        <Figuren data={data} />
+      </section>
     </Layout>
   )
 }

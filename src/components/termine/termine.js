@@ -6,7 +6,7 @@ import Termin from '../termin/termin'
 class Termine extends React.Component {
   render() {
     return (
-      <div>
+      <div className={styles.termine}>
         {this.props.data.termine.edges.map(termin => (
           <Termin
             key={termin.node.id}

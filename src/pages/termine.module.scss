@@ -1,0 +1,15 @@
+@import '../styles/base';
+
+$color-secondary: var(--color-secondary);
+
+.h2Span {
+  font-size: 9.4rem;
+}
+
+.termine {
+  margin-bottom: 5rem;
+}
+
+.sectionTermine {
+  background-color: $color-secondary;
+}

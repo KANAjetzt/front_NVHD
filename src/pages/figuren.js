@@ -4,29 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-export const query = graphql`
-  query figurenPageQuery {
-    page: allSanityFigur(filter: { einsatz: { eq: "verein" } }) {
-      edges {
-        node {
-          id
-          name
-          einsatz
-          description
-          bild {
-            _type
-            asset {
-              path
-            }
-          }
-        }
-      }
-    }
-  }
-`
-
-const figurenPage = ({ data }) => {
-  console.log(data)
+const figurenPage = () => {
 
   return (
     <Layout>

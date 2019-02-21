@@ -1,0 +1,22 @@
+@import '/../styles/base';
+
+$color-secondary: var(--color-secondary);
+$color-tertiary: var(--color-tertiary);
+$color-white: var(--color-white);
+
+.chronikPage {
+  background-color: $color-tertiary;
+  p {
+    color: $color-white;
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+}
+
+.heading {
+  color: $color-secondary;
+}
+
+.text {
+  margin-bottom: 5rem;
+}

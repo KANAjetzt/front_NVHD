@@ -30,6 +30,7 @@ const indexPage = ({ data }) => {
 
         <BtnCta link="/figuren">Mehr erfahren</BtnCta>
       </section>
+
       <section className={styles.terminSection}>
         <h3>
           Fasnet <br />

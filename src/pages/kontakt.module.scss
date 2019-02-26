@@ -1,0 +1,12 @@
+@import '../styles/base';
+
+.pageKontakt {
+  h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+  }
+
+  div p:last-child {
+    margin-bottom: 2rem;
+  }
+}

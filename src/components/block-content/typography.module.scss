@@ -67,7 +67,7 @@
 .paragraph {
   font-size: var(--font-base-size);
   line-height: var(--font-base-line-height);
-  margin: 0.5rem 0 1rem 0;
+  margin: 1rem 0 2rem 0;
 
   @media (--media-min-small) {
     font-size: var(--font-base-size);
@@ -120,7 +120,7 @@
 
 .responsiveTitle3 {
   font-weight: 900;
-  font-size: var(--font-large-size);
+  font-size: var(--font-title3-size);
   line-height: var(--font-large-line-height);
   margin: 1rem 0 0.5rem;
 

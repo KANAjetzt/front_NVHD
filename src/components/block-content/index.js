@@ -42,7 +42,12 @@ const serializers = {
 }
 
 const BlockContent = ({ blocks }) => (
-  <BaseBlockContent blocks={blocks} serializers={serializers} />
+  <BaseBlockContent
+    blocks={blocks}
+    serializers={serializers}
+    projectId="74ftimmm"
+    dataset="production"
+  />
 )
 
 export default BlockContent

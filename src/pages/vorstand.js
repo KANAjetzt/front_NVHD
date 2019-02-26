@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import styles from './vorstand.module.scss'
 
 export const query = graphql`
   query vorstandPageQuery {
@@ -57,42 +57,47 @@ const vorstandPage = ({ data }) => {
   console.log(data)
   return (
     <Layout>
-      <SEO
-        title="Vorstand"
-        keywords={[`vornstand`, `präsident`, `vizepräsident`]}
-      />
-      <h2>Der Vorstand</h2>
+      <section className={styles.pageVorstand}>
+        <SEO
+          title="Vorstand"
+          keywords={[`vornstand`, `präsident`, `vizepräsident`]}
+        />
+        <h2>
+          Der <br />
+          <span>Vorstand</span>
+        </h2>
 
-      <div>
-        <h3>Präsident</h3>
-        <p>{data.president.edges[0].node.name}</p>
-      </div>
+        <div>
+          <h3>Präsident</h3>
+          <p>{data.president.edges[0].node.name}</p>
+        </div>
 
-      <div>
-        <h3>Vizepräsident</h3>
-        <p>{data.vizePresident.edges[0].node.name}</p>
-      </div>
+        <div>
+          <h3>Vizepräsident</h3>
+          <p>{data.vizePresident.edges[0].node.name}</p>
+        </div>
 
-      <div>
-        <h3>Kassiererin</h3>
-        <p>{data.kassierer.edges[0].node.name}</p>
-      </div>
+        <div>
+          <h3>Kassiererin</h3>
+          <p>{data.kassierer.edges[0].node.name}</p>
+        </div>
 
-      <div>
-        <h3>Schriftführer</h3>
-        <p>{data.schriftfuehrer.edges[0].node.name}</p>
-      </div>
+        <div>
+          <h3>Schriftführer</h3>
+          <p>{data.schriftfuehrer.edges[0].node.name}</p>
+        </div>
 
-      <div>
-        <h3>Elferräte</h3>
-        <p>
-          {data.elferrat.edges.map(elfer => (
-            <React.Fragment key={elfer.node.id}>
-              {elfer.node.name} <br />
-            </React.Fragment>
-          ))}
-        </p>
-      </div>
+        <div>
+          <h3>Elferräte</h3>
+          <p>
+            {data.elferrat.edges.map(elfer => (
+              <React.Fragment key={elfer.node.id}>
+                {elfer.node.name} <br />
+              </React.Fragment>
+            ))}
+          </p>
+        </div>
+      </section>
     </Layout>
   )
 }

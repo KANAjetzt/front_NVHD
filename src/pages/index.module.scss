@@ -28,8 +28,10 @@ $color-white: var(--color-white);
   background-color: $color-secondary;
   background-clip: padding-box;
   color: $color-white;
-  margin-left: -1rem;
-  margin-right: -1rem;
+  margin-left: -9999rem;
+  margin-right: -9999rem;
+  padding-left: 9999rem;
+  padding-right: -9999rem;
 
   p {
     color: $color-white;
@@ -45,7 +47,8 @@ $color-white: var(--color-white);
   background-color: $color-primary;
   background-clip: padding-box;
   color: $color-secondary;
-  margin: 0 -1rem -10rem -1rem;
+  margin: 0 -9999rem -10rem -9999rem;
+  padding: 5rem 9999rem 10rem 9999rem;
 
   &P,
   &H3 {

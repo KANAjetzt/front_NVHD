@@ -15,17 +15,20 @@ class Navigation extends React.Component {
   }
 
   render() {
+    console.log(this.state)
+    console.log(this.props)
+
     return (
       <nav
         className={
-          this.props.showMenu
+          this.state.showMenu
             ? this.checkStyle('backgroundOnClick')
             : this.checkStyle('background')
         }
       >
         <ul
           className={
-            this.props.showMenu
+            this.state.showMenu
               ? this.checkStyle('navOnClick')
               : this.checkStyle('nav')
           }
@@ -84,7 +87,9 @@ class Navigation extends React.Component {
               className={this.checkStyle('linkIcon')}
               fill={'#f0be2a'}
             />
-            <Link to="/kontakt">Kontakt</Link>
+            <Link to="/kontakt" activeClassName={this.checkStyle('active')}>
+              Kontakt
+            </Link>
           </li>
         </ul>
       </nav>

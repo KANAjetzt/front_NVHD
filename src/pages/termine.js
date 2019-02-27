@@ -4,10 +4,10 @@ import SEO from '../components/seo'
 import Termine from '../components/termine/termine'
 import styles from './termine.module.scss'
 
-const terminePage = () => {
+const terminePage = props => {
   return (
     <section className={styles.sectionTermine}>
-      <Layout>
+      <Layout currentPath={props.location.pathname}>
         <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
 
         <h2>

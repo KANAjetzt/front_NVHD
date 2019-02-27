@@ -6,9 +6,10 @@ import BtnCta from '../components/Btn-Cta/btnCta'
 import ImageCompVereinsfiguren from '../components/image-comp-Vereinsfiguren/imageCompVereinsfiguren'
 import Termine from '../components/termine/termine'
 
-const indexPage = ({ data }) => {
+const indexPage = props => {
+  console.log(props)
   return (
-    <Layout>
+    <Layout currentPath={props.location.pathname}>
       <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
       <section>
         <p className={styles.brauchtumInSchönsterForm}>

@@ -5,7 +5,22 @@ import styles from './layout.module.scss'
 import Header from './header/header'
 import Footer from './footer/footer'
 
-const Layout = ({ children }) => (
+class Layout extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <Header
+          siteTitle={this.props.data.site.siteMetadata.title}
+          currentPath={this.props.currentPath}
+        />
+        <div className={styles.base}>{this.props.children}</div>
+        <Footer />
+      </React.Fragment>
+    )
+  }
+}
+
+export default props => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -16,18 +31,10 @@ const Layout = ({ children }) => (
         }
       }
     `}
-    render={data => (
-      <>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div className={styles.base}>{children}</div>
-        <Footer />
-      </>
-    )}
+    render={data => <Layout data={data} {...props} />}
   />
 )
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
-
-export default Layout

@@ -4,6 +4,7 @@ $color-primary: var(--color-primary);
 $color-secondary: var(--color-secondary);
 $color-white: var(--color-white);
 $color-grey-dark: var(--color-grey-dark);
+$color-cta-lighten: var(--color-cta-lighten);
 
 .background {
   top: 0;
@@ -52,4 +53,8 @@ $color-grey-dark: var(--color-grey-dark);
 
 .linkIcon {
   margin-right: 1rem;
+}
+
+.active {
+  color: $color-cta-lighten;
 }

@@ -56,11 +56,9 @@ export const query = graphql`
   }
 `
 
-const kontaktPage = ({ data }) => {
-  console.log(data)
-
+const kontaktPage = ({ data, ...props }) => {
   return (
-    <Layout>
+    <Layout currentPath={props.location.pathname}>
       <section className={styles.pageKontakt}>
         <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
         <h2>

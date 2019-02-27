@@ -20,11 +20,11 @@ export const query = graphql`
   }
 `
 
-const chronikPage = ({ data }) => {
-  console.log(data)
+const chronikPage = ({ data, ...props }) => {
+  console.log(props)
   return (
     <section className={styles.chronikPage}>
-      <Layout>
+      <Layout currentPath={props.location.pathname}>
         <SEO title="Chronik" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
         <h2 className={styles.heading}>
           Unsere <br />

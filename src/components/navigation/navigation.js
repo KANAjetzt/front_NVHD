@@ -21,14 +21,14 @@ class Navigation extends React.Component {
     return (
       <nav
         className={
-          this.state.showMenu
+          this.props.showMenu
             ? this.checkStyle('backgroundOnClick')
             : this.checkStyle('background')
         }
       >
         <ul
           className={
-            this.state.showMenu
+            this.props.showMenu
               ? this.checkStyle('navOnClick')
               : this.checkStyle('nav')
           }

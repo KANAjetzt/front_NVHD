@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import styles from './galerieView.module.scss'
 
-/******** 
+/********
   TODO:
   - Take the first image of a "galerie" as thump
   - link to a galerie with all the images
@@ -14,19 +14,19 @@ class GalerieView extends React.Component {
     return (
       <React.Fragment>
         {this.props.data.page.edges.map(galerie => (
-          <Link
+            <div className={styles.galerie}>
+            <Link
             to={`/galerie/${galerie.node.slug.current}/`}
             key={galerie.node.id}
           >
-            <div className={styles.galerie}>
               <h3>{galerie.node.title}</h3>
               <img
                 src={`https://cdn.sanity.io/${
                   galerie.node.galerie.bild[0].asset.path
                 }`}
               />
+              </Link>
             </div>
-          </Link>
         ))}
       </React.Fragment>
     )

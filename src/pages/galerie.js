@@ -33,7 +33,8 @@ const galeriePage = ({ data, ...props }) => {
     <Layout currentPath={props.location.pathname}>
       <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
       <h2>
-        die <span>Galerie</span>
+        die <br />
+        <span>Galerie</span>
       </h2>
 
       <GalerieView />

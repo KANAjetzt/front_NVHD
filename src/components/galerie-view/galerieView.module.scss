@@ -1,9 +1,49 @@
+@import '../../styles/base';
+@import '../../styles/animation';
+
+$color-secondary: var(--color-secondary);
+$color-white: var(--color-white);
+
 .galerie {
-  width: 90vw;
-  margin: 0 auto;
+  width: 100%;
+  margin: 2rem auto;
+  position: relative;
+  border: 0.5rem solid $color-secondary;
+
+  a {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &:hover h3 {
+    transform: scale(1.1);
+  }
+  h3 {
+    grid-row: 1;
+    grid-column: 1;
+    // position: absolute;
+    align-self: center;
+    justify-self: center;
+    margin: 0;
+    z-index: 1;
+    color: $color-white;
+    font-size: 6vw;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    // transform-origin: center;
+    transition: all 0.5s;
+  }
 
   img {
+    grid-row: 1;
+    grid-column: 1;
     width: 100%;
     height: auto;
+    filter: brightness(0.2);
   }
 }

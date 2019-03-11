@@ -24,12 +24,13 @@ $BurgerIconGap: 7px;
   margin-bottom: 3rem;
   min-height: 5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
 // Burger Nav Icon
 
 .burgerNavIconBox {
-  position: fixed;
+  position: sticky;
   top: 0;
   right: 0;
   z-index: 2000;
@@ -42,7 +43,7 @@ $BurgerIconGap: 7px;
   height: 5rem;
   text-align: center;
   margin-right: $sidePadding;
-  transform: translateY(1px);
+  transform: translateY(-3px);
 }
 
 // mitte

@@ -28,10 +28,6 @@ $color-white: var(--color-white);
   background-color: $color-secondary;
   background-clip: padding-box;
   color: $color-white;
-  margin-left: -9999rem;
-  margin-right: -9999rem;
-  padding-left: 9999rem;
-  padding-right: -9999rem;
 
   p {
     color: $color-white;
@@ -41,14 +37,42 @@ $color-white: var(--color-white);
     padding-left: 1rem;
     padding-right: 1rem;
   }
+
+  &:before,
+  &:after {
+    content: '';
+    height: 100%;
+  }
+  &:before {
+    position: absolute;
+    left: 0px;
+    transform: translateY(-4.1rem);
+    display: block;
+    width: 100vw;
+    background-color: $color-secondary;
+    z-index: -1;
+  }
 }
 
 .kontaktSection {
   background-color: $color-primary;
   background-clip: padding-box;
   color: $color-secondary;
-  margin: 0 -9999rem -10rem -9999rem;
-  padding: 5rem 9999rem 10rem 9999rem;
+
+  &:before,
+  &:after {
+    content: '';
+    height: 100%;
+  }
+  &:before {
+    position: absolute;
+    left: 0px;
+    transform: translateY(-4rem);
+    display: block;
+    width: 100vw;
+    background-color: $color-primary;
+    z-index: -1;
+  }
 
   &P,
   &H3 {

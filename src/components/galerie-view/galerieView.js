@@ -14,19 +14,16 @@ class GalerieView extends React.Component {
     return (
       <React.Fragment>
         {this.props.data.page.edges.map(galerie => (
-            <div className={styles.galerie}>
-            <Link
-            to={`/galerie/${galerie.node.slug.current}/`}
-            key={galerie.node.id}
-          >
+          <div className={styles.galerie} key={galerie.node.id}>
+            <Link to={`/galerie/${galerie.node.slug.current}/`}>
               <h3>{galerie.node.title}</h3>
               <img
                 src={`https://cdn.sanity.io/${
                   galerie.node.galerie.bild[0].asset.path
                 }`}
               />
-              </Link>
-            </div>
+            </Link>
+          </div>
         ))}
       </React.Fragment>
     )

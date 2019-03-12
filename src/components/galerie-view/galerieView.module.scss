@@ -39,11 +39,15 @@ $color-white: var(--color-white);
     transition: all 0.5s;
   }
 
+  &:hover img {
+    filter: brightness(0.8);
+  }
   img {
     grid-row: 1;
     grid-column: 1;
     width: 100%;
     height: auto;
-    filter: brightness(0.2);
+    filter: brightness(0.5);
+    transition: all 0.5s;
   }
 }

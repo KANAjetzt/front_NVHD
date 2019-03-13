@@ -213,6 +213,8 @@ $ig-transparent: rgba(0, 0, 0, 0) !default;
 
   img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .image-gallery-description {

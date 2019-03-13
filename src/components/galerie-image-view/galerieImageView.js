@@ -10,20 +10,45 @@ import { throws } from 'assert'
 */
 
 export default class galerieImageView extends React.Component {
-  state = {
-    showSlider: false,
-    images: [],
+  constructor() {
+    super()
+    this.state = {
+      showSlider: false,
+      images: [],
+      currentImage: 0,
+    }
+    this.closeSlider = this.closeSlider.bind(this)
+    this.openSlider = this.openSlider.bind(this)
+    this.gotoNext = this.gotoNext.bind(this)
+    this.gotoPrevious = this.gotoPrevious.bind(this)
   }
 
-  toggleSlider = () => {
-    console.log('this works fine!' + this.state.showSlider)
+  openSlider(event, obj) {
+    console.log(event)
+    console.log(obj)
     this.setState({
-      showSlider: !this.state.showSlider,
+      currentImage: obj,
+      showSlider: true,
     })
   }
 
-  prepareImages = () => {
-    console.log(this.state.images)
+  closeSlider() {
+    this.setState({
+      currentImage: 0,
+      showSlider: false,
+    })
+  }
+
+  gotoPrevious() {
+    this.setState({
+      currentImage: this.state.currentImage - 1,
+    })
+  }
+
+  gotoNext() {
+    this.setState({
+      currentImage: this.state.currentImage + 1,
+    })
   }
 
   componentDidMount() {
@@ -44,15 +69,24 @@ export default class galerieImageView extends React.Component {
     return (
       <React.Fragment>
         {this.props.stuff.title && <h2>{this.props.stuff.title}</h2>}
-        {this.state.showSlider && <GallerySlider images={this.state.images} />}
+        {this.state.showSlider && (
+          <GallerySlider
+            images={this.state.images}
+            openSlider={this.openSlider}
+            closeSlider={this.closeSlider}
+            gotoPrevious={this.gotoPrevious}
+            gotoNext={this.gotoNext}
+            sliderState={this.state.showSlider}
+            currentImage={this.state.currentImage}
+          />
+        )}
         <div className={styles.galerieImageView}>
-          {this.props.stuff.galerie.bild.map(bild => (
-            <div
-              key={bild.asset._id}
-              className={styles.imageItem}
-              onClick={this.toggleSlider}
-            >
-              <img src={`https://cdn.sanity.io/${bild.asset.path}`} />
+          {this.props.stuff.galerie.bild.map((bild, index) => (
+            <div key={bild.asset._id} className={styles.imageItem}>
+              <img
+                src={`https://cdn.sanity.io/${bild.asset.path}`}
+                onClick={e => this.openSlider(e, index)}
+              />
             </div>
           ))}
         </div>

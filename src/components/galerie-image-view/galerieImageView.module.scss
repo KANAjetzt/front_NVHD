@@ -22,6 +22,11 @@ $color-secondary: var(--color-secondary);
     overflow: hidden;
     border: 0.5rem solid $color-secondary;
     cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   img {

@@ -37,6 +37,10 @@ $color-white: var(--color-white);
     white-space: nowrap;
     // transform-origin: center;
     transition: all 0.5s;
+
+    @media only screen and (min-width: $bp-largest) {
+      font-size: 7.6rem;
+    }
   }
 
   &:hover img {

@@ -46,12 +46,17 @@ $color-white: var(--color-white);
   &:hover img {
     filter: brightness(0.8);
   }
+}
+
+.GalerieThump {
+  grid-row: 1;
+  grid-column: 1;
+  width: 100%;
+  height: auto;
+  filter: brightness(0.5);
+  transition: all 0.5s;
+
   img {
-    grid-row: 1;
-    grid-column: 1;
-    width: 100%;
-    height: auto;
-    filter: brightness(0.5);
-    transition: all 0.5s;
+    transition: all 0.5s !important;
   }
 }

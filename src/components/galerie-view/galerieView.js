@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import styles from './galerieView.module.scss'
+import Img from 'gatsby-image'
 
 /********
   TODO:
@@ -17,11 +18,9 @@ class GalerieView extends React.Component {
           <div className={styles.galerie} key={galerie.node.id}>
             <Link to={`/galerie/${galerie.node.slug.current}/`}>
               <h3>{galerie.node.title}</h3>
-              <img
-                src={`https://cdn.sanity.io/${
-                  galerie.node.galerie.bild[0].asset.path
-                }`}
-              />
+              <div className={styles.GalerieThump}>
+                <Img fluid={galerie.node.galerie.bild[0].asset.fluid} />
+              </div>
             </Link>
           </div>
         ))}
@@ -45,6 +44,9 @@ export default props => (
               galerie {
                 bild {
                   asset {
+                    fluid(maxWidth: 700) {
+                      ...GatsbySanityImageFluid
+                    }
                     id
                     path
                   }

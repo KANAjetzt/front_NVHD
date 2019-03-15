@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './galerieImageView.module.scss'
 import GallerySlider from '../galeire-image-slide/galerieImageSlide'
 import Gallery from 'react-photo-gallery'
+import ImgPrep from './gatsbyImagePrepare'
 import Img from 'gatsby-image'
 import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity'
 
@@ -20,9 +21,10 @@ export default class galerieImageView extends React.Component {
     this.gotoPrevious = this.gotoPrevious.bind(this)
   }
 
-  openSlider(event, obj) {
+  openSlider(event, index) {
+    console.log(index)
     this.setState({
-      currentImage: obj.index,
+      currentImage: index,
       showSlider: true,
     })
   }
@@ -54,7 +56,7 @@ export default class galerieImageView extends React.Component {
         images: [
           ...prevState.images,
           {
-            src: `https://cdn.sanity.io/${bild.asset.path}`,
+            src: bild.asset._id,
             width: Math.round(bild.asset.metadata.dimensions.width),
             height: Math.round(bild.asset.metadata.dimensions.height),
           },
@@ -80,7 +82,11 @@ export default class galerieImageView extends React.Component {
           />
         )}
 
-        <Gallery photos={this.state.images} onClick={this.openSlider} />
+        <Gallery
+          photos={this.state.images}
+          onClick={this.openSlider}
+          ImageComponent={ImgPrep}
+        />
       </React.Fragment>
     )
   }

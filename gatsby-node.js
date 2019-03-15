@@ -135,6 +135,12 @@ exports.createPages = async ({ actions, graphql }) => {
                 asset {
                   _id
                   path
+                  metadata {
+                    dimensions {
+                      width
+                      height
+                    }
+                  }
                 }
               }
             }

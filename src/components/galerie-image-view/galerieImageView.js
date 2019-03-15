@@ -1,13 +1,8 @@
 import React from 'react'
 import styles from './galerieImageView.module.scss'
 import GallerySlider from '../galeire-image-slide/galerieImageSlide'
-import { throws } from 'assert'
-
-/******** 
-  TODO:
-  - Take the first image of a "galerie" as thump
-  - link to a galerie with all the images
-*/
+import Img from 'gatsby-image'
+import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity'
 
 export default class galerieImageView extends React.Component {
   constructor() {
@@ -56,16 +51,16 @@ export default class galerieImageView extends React.Component {
     this.props.stuff.galerie.bild.forEach(bild => {
       console.log(`https://cdn.sanity.io/${bild.asset.path}`)
       this.setState(prevState => ({
-        images: [
-          ...prevState.images,
-          `https://cdn.sanity.io/${bild.asset.path}`,
-        ],
+        images: [...prevState.images, bild.asset._id],
       }))
     })
   }
 
   render() {
     console.log(this.props)
+
+    const sanityConfig = { projectId: '74ftimmm', dataset: 'production' }
+
     return (
       <React.Fragment>
         {this.props.stuff.title && <h2>{this.props.stuff.title}</h2>}
@@ -81,14 +76,23 @@ export default class galerieImageView extends React.Component {
           />
         )}
         <div className={styles.galerieImageView}>
-          {this.props.stuff.galerie.bild.map((bild, index) => (
-            <div key={bild.asset._id} className={styles.imageItem}>
-              <img
-                src={`https://cdn.sanity.io/${bild.asset.path}`}
+          {this.state.images.map((bild, index) => {
+            const fluidProps = getFluidGatsbyImage(
+              bild,
+              { maxWidth: 1024 },
+              sanityConfig
+            )
+
+            return (
+              <div
+                key={`image-${index}`}
+                className={styles.imageItem}
                 onClick={e => this.openSlider(e, index)}
-              />
-            </div>
-          ))}
+              >
+                <Img fluid={fluidProps} />
+              </div>
+            )
+          })}
         </div>
       </React.Fragment>
     )

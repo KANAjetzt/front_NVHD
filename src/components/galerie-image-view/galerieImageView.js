@@ -21,10 +21,10 @@ export default class galerieImageView extends React.Component {
     this.gotoPrevious = this.gotoPrevious.bind(this)
   }
 
-  openSlider(event, index) {
-    console.log(index)
+  openSlider(event, obj) {
+    console.log(obj)
     this.setState({
-      currentImage: index,
+      currentImage: obj.index,
       showSlider: true,
     })
   }
@@ -52,9 +52,14 @@ export default class galerieImageView extends React.Component {
     console.log(this.props)
     this.props.stuff.galerie.bild.forEach(bild => {
       this.setState(prevState => ({
-        imagesID: [...prevState.imagesID, bild.asset._id],
         images: [
           ...prevState.images,
+          {
+            src: `https://cdn.sanity.io/${bild.asset.path}`,
+          },
+        ],
+        imagesID: [
+          ...prevState.imagesID,
           {
             src: bild.asset._id,
             width: Math.round(bild.asset.metadata.dimensions.width),
@@ -72,7 +77,7 @@ export default class galerieImageView extends React.Component {
         {this.props.stuff.title && <h2>{this.props.stuff.title}</h2>}
         {this.state.showSlider && (
           <GallerySlider
-            images={this.state.images.map(imgObj => imgObj.src)}
+            images={this.state.images}
             openSlider={this.openSlider}
             closeSlider={this.closeSlider}
             gotoPrevious={this.gotoPrevious}
@@ -83,7 +88,7 @@ export default class galerieImageView extends React.Component {
         )}
 
         <Gallery
-          photos={this.state.images}
+          photos={this.state.imagesID}
           onClick={this.openSlider}
           ImageComponent={ImgPrep}
         />

@@ -4,6 +4,7 @@ import './image-gallery.scss'
 
 export default class GallerieImageSlide extends React.Component {
   render() {
+    console.log(this.props)
     const images = this.props.images.map(image => {
       return {
         src: `${image}`,
@@ -12,7 +13,7 @@ export default class GallerieImageSlide extends React.Component {
 
     return (
       <ImageSlider
-        images={images}
+        images={this.props.images}
         isOpen={this.props.sliderState}
         onClose={this.props.closeSlider}
         onClickPrev={this.props.gotoPrevious}

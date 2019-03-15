@@ -18,6 +18,11 @@ $color-grey-dark: var(--color-grey-dark);
   font-size: 2.4rem;
   text-decoration: none;
   color: $color-secondary;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .linkIcon {

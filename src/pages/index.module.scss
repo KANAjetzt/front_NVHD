@@ -49,10 +49,10 @@ $color-white: var(--color-white);
   background-color: $color-primary;
   background-clip: padding-box;
   color: $color-secondary;
-  margin: 0 -1rem -5rem -1rem;
+  margin: 0 -1rem -10rem -1rem;
 
   @media only screen and (min-width: $bp-mediumer) {
-    margin: 0 -9999rem;
+    margin: 0 -9999rem -10rem -9999rem;
     padding: 4rem 9999rem 11rem 9999rem;
   }
 

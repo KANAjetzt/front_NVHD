@@ -11,6 +11,8 @@ export default function GatsbyImagePrepare(props) {
     sanityConfig
   )
 
+  console.log(props)
+
   return (
     <div
       style={{
@@ -18,7 +20,7 @@ export default function GatsbyImagePrepare(props) {
         height: props.photo.height,
         width: props.photo.width,
       }}
-      onClick={e => props.onClick(e, props.index)}
+      onClick={e => props.onClick(e, props)}
     >
       <Img fluid={fluidProps} />
     </div>

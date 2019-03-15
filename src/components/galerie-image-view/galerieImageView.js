@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './galerieImageView.module.scss'
 import GallerySlider from '../galeire-image-slide/galerieImageSlide'
+import Gallery from 'react-photo-gallery'
 import Img from 'gatsby-image'
 import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity'
 
@@ -9,6 +10,7 @@ export default class galerieImageView extends React.Component {
     super()
     this.state = {
       showSlider: false,
+      imagesID: [],
       images: [],
       currentImage: 0,
     }
@@ -51,15 +53,21 @@ export default class galerieImageView extends React.Component {
     this.props.stuff.galerie.bild.forEach(bild => {
       console.log(`https://cdn.sanity.io/${bild.asset.path}`)
       this.setState(prevState => ({
-        images: [...prevState.images, bild.asset._id],
+        imagesID: [...prevState.imagesID, bild.asset._id],
+        images: [
+          ...prevState.images,
+          {
+            src: `https://cdn.sanity.io/${bild.asset.path}`,
+            width: Math.round(bild.asset.metadata.dimensions.width),
+            height: Math.round(bild.asset.metadata.dimensions.height),
+          },
+        ],
       }))
     })
   }
 
   render() {
     console.log(this.props)
-
-    const sanityConfig = { projectId: '74ftimmm', dataset: 'production' }
 
     return (
       <React.Fragment>
@@ -75,25 +83,8 @@ export default class galerieImageView extends React.Component {
             currentImage={this.state.currentImage}
           />
         )}
-        <div className={styles.galerieImageView}>
-          {this.state.images.map((bild, index) => {
-            const fluidProps = getFluidGatsbyImage(
-              bild,
-              { maxWidth: 1024 },
-              sanityConfig
-            )
 
-            return (
-              <div
-                key={`image-${index}`}
-                className={styles.imageItem}
-                onClick={e => this.openSlider(e, index)}
-              >
-                <Img fluid={fluidProps} />
-              </div>
-            )
-          })}
-        </div>
+        <Gallery photos={this.state.images} onClick={this.openSlider} />
       </React.Fragment>
     )
   }

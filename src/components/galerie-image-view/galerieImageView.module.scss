@@ -9,7 +9,14 @@ $color-secondary: var(--color-secondary);
   width: 100vw;
   height: 100vh;
 }
+.heading {
+  font-size: 8vw;
+  margin-bottom: 2rem;
 
+  @media only screen and (min-width: $bp-smallest) {
+    font-size: 4.7rem;
+  }
+}
 .galerieImageView {
   grid-column: full-start/full-end;
   display: grid;

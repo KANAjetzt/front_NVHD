@@ -11,7 +11,7 @@ export default function GatsbyImagePrepare(props) {
     sanityConfig
   )
 
-  console.log(props)
+  // console.log(fluidProps)
 
   return (
     <div

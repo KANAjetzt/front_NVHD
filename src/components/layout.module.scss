@@ -66,12 +66,16 @@ h2 {
   margin-bottom: 6rem;
 
   span {
-    font-size: 6.4rem;
+    font-size: 5.3rem;
+
+    @media only screen and (min-width: $bp-smallest) {
+      font-size: 6.4rem;
+    }
   }
 }
 
 h3 {
-  font-size: 4.7rem;
+  font-size: 4rem;
   font-family: $base-font;
   font-weight: 700;
   line-height: 0.9;

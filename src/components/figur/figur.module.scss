@@ -1,3 +1,5 @@
+@import '../../styles/base';
+
 .figur {
   display: flex;
   flex-direction: column;
@@ -13,10 +15,14 @@
 }
 
 .heading {
-  font-size: 4rem;
+  font-size: 3.5rem;
   text-transform: uppercase;
   align-self: center;
   margin-bottom: 1.5rem;
+
+  @media only screen and (min-width: $bp-smallest) {
+    font-size: 4rem;
+  }
 }
 
 .text {

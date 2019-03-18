@@ -45,8 +45,8 @@ const BlockContent = ({ blocks }) => (
   <BaseBlockContent
     blocks={blocks}
     serializers={serializers}
-    projectId={process.env.GATSBY_PROJECT_ID}
-    dataset={process.env.GATSBY_PROJECT_DATASET}
+    projectId={`74ftimmm`}
+    dataset={`production`}
   />
 )
 

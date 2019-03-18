@@ -30,9 +30,11 @@ $color-cta-lighten: var(--color-cta-lighten);
 
 .nav {
   opacity: 0;
+  visibility: hidden;
   &OnClick {
     composes: nav;
     opacity: 1;
+    visibility: visible;
   }
 }
 

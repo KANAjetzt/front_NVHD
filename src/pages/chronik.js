@@ -31,7 +31,7 @@ const chronikPage = ({ data, ...props }) => {
           <span>Geschichte</span>
         </h2>
         <div className={styles.text}>
-          <BlockContent blocks={data.page.edges[0].node._rawText || []} />
+          <BlockContent blocks={data.page.edges[0].node._rawText} />
         </div>
       </Layout>
     </section>

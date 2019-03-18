@@ -3,6 +3,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import BlockContent from '../components/block-content'
+import styles from './impressum.module.scss'
 
 export const query = graphql`
   query impressumPageQuery {
@@ -27,13 +29,7 @@ export const query = graphql`
         node {
           id
           title
-          text {
-            _key
-            children {
-              _key
-              text
-            }
-          }
+          _rawText
         }
       }
     }
@@ -44,45 +40,39 @@ const impressumPage = ({ data }) => {
   console.log(data)
 
   return (
-    <Layout>
-      <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
-      <h2>Impressum</h2>
+    <section className={styles.impressumPage}>
+      <Layout>
+        <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
+        <h2>Impressum</h2>
 
-      <div>
-        <p>Narrenverein 'Heuliecher' Heudorf im Hegau 1984 e.V.</p>
+        <div>
+          <p>Narrenverein 'Heuliecher' Heudorf im Hegau 1984 e.V.</p>
+          <br />
+          <p>
+            <h3 className={styles.presi}>Präsident</h3>
+            <br />
+            {data.president.edges[0].node.name} <br />
+            {data.president.edges[0].node.adresse.strassehausnummer} <br />
+            {data.president.edges[0].node.adresse.postleizahl}{' '}
+            {data.president.edges[0].node.adresse.ort} <br />
+            {data.president.edges[0].node.telefon} <br />
+            {data.president.edges[0].node.email}
+          </p>
 
-        <p>
-          Präsident <br />
-          {data.president.edges[0].node.name} <br />
-          {data.president.edges[0].node.adresse.strassehausnummer} <br />
-          {data.president.edges[0].node.adresse.postleizahl}{' '}
-          {data.president.edges[0].node.adresse.ort} <br />
-          {data.president.edges[0].node.telefon} <br />
-          {data.president.edges[0].node.email}
-        </p>
+          <br />
 
-        <p>Eingetragen im Vereinsregister, Amtsgericht Stockach, VR590157</p>
-        <p>
-          Inhaltlich Verantwortlicher gemäß § 6 MDStV:{' '}
-          {data.president.edges[0].node.name}
-        </p>
-      </div>
+          <p>Eingetragen im Vereinsregister, Amtsgericht Stockach, VR590157</p>
+          <p>
+            Inhaltlich Verantwortlicher gemäß § 6 MDStV:{' '}
+            {data.president.edges[0].node.name}
+          </p>
+        </div>
 
-      <div>
-        {data.impressum.edges[0].node.text.map(text => {
-          if (text.children) {
-            return <p key={text._key}>{text.children[0].text}</p>
-          } else {
-            return (
-              <img
-                src={`https://cdn.sanity.io/${text.asset.path}`}
-                key={text._key}
-              />
-            )
-          }
-        })}
-      </div>
-    </Layout>
+        <div>
+          <BlockContent blocks={data.impressum.edges[0].node._rawText} />
+        </div>
+      </Layout>
+    </section>
   )
 }
 

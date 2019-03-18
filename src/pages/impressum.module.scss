@@ -4,19 +4,17 @@ $color-secondary: var(--color-secondary);
 $color-tertiary: var(--color-tertiary);
 $color-white: var(--color-white);
 
-.chronikPage {
-  background-color: $color-tertiary;
+.impressumPage {
   p {
-    color: $color-white;
     font-size: 1.4rem;
     line-height: 1.6;
   }
 
   h3 {
     padding-top: 2rem;
+    margin-bottom: 0;
     font-size: 2rem;
     font-weight: 400;
-    color: $color-secondary;
   }
 
   figure {
@@ -29,12 +27,4 @@ $color-white: var(--color-white);
       height: auto;
     }
   }
-}
-
-.heading {
-  color: $color-secondary;
-}
-
-.text {
-  margin-bottom: 5rem;
 }

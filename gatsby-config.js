@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 module.exports = {
+  pathPrefix: '/front_NVHD',
   siteMetadata: {
     title: `Narrenverein Heulicher | Heudorf im Hegau`,
     description: `Der Narrenverein Heulicher`,

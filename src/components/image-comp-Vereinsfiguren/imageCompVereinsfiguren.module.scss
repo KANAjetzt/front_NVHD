@@ -1,10 +1,13 @@
+@import '../../styles/base';
+
 .figurenImagesBox {
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 100%);
-  grid-template-rows: min-content;
+  align-self: center;
+  grid-template-columns: repeat(3, 1fr);
   align-items: end;
-  max-width: 50rem;
+  width: 100%;
+  max-width: 80rem;
+
   img {
     width: 100%;
     height: auto;
@@ -12,16 +15,17 @@
 
   figure figcaption {
     text-align: center;
+    visibility: hidden;
+
+    @media only screen and (min-width: $bp-smallest) {
+      visibility: visible;
+    }
   }
 }
 
 .Figur0 {
-  grid-column: 6 / 11;
-  grid-row: 1 / 2;
-  transition: all 0.3s;
-
-  &:hover {
-    transform: scale(1.1);
+  @media only screen and (min-width: $bp-smallest) {
+    transform: translateX(9rem);
   }
 
   figcaption {
@@ -29,36 +33,23 @@
     position: relative;
     z-index: -1;
   }
-
-  &:hover figcaption {
-    transform: translateX(-9px) scale(1.1);
-  }
 }
 
 .Figur1 {
-  grid-column: 3/ 8;
-  grid-row: 1 / 2;
-  transition: all 0.3s;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-
-  &:hover figcaption {
-    transform: translateX(-9px) scale(1.1);
+  figcaption {
+    transform: translateX(1.2rem);
+    position: relative;
+    z-index: -1;
   }
 }
-.Figur2 {
-  grid-column: 9 / 13;
-  grid-row: 1 / 2;
-  width: 90%;
-  transition: all 0.3s;
 
-  &:hover {
-    transform: scale(1.1);
+.Figur2 {
+  @media only screen and (min-width: $bp-smallest) {
+    transform: translateX(-9rem);
   }
 
-  &:hover figcaption {
-    transform: translateX(-9px) scale(1.1);
+  figcaption {
+    position: relative;
+    z-index: -1;
   }
 }

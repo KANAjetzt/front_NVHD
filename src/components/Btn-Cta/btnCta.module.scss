@@ -17,6 +17,11 @@ $base-font: var(--base-font);
   background: $color-cta;
   cursor: pointer;
   text-align: center;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: $base-font;
+  font-weight: 700;
+  font-size: 2.4rem;
+  text-transform: uppercase;
   border-radius: 10px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 
@@ -38,6 +43,7 @@ $base-font: var(--base-font);
 
   &Text {
     text-decoration: none;
+    text-align: center;
     color: rgba(255, 255, 255, 0.75);
     font-family: $base-font;
     font-weight: 700;

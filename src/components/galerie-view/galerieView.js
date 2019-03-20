@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import styles from './galerieView.module.scss'
-import Img from 'gatsby-image'
+import Galerie from '../galerie/galerie'
 
 /********
   TODO:
@@ -11,19 +11,13 @@ import Img from 'gatsby-image'
 
 class GalerieView extends React.Component {
   render() {
-    console.log(this.props)
     return (
       <React.Fragment>
-        {this.props.data.page.edges.map(galerie => (
-          <div className={styles.galerie} key={galerie.node.id}>
-            <Link to={`/galerie/${galerie.node.slug.current}/`}>
-              <h3>{galerie.node.title}</h3>
-              <div className={styles.GalerieThump}>
-                <Img fluid={galerie.node.galerie.bild[0].asset.fluid} />
-              </div>
-            </Link>
-          </div>
-        ))}
+        <div className={styles.galerieWrapper}>
+          {this.props.data.page.edges.map(galerie => (
+            <Galerie data={galerie} key={galerie.id} />
+          ))}
+        </div>
       </React.Fragment>
     )
   }

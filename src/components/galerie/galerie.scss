@@ -1,0 +1,71 @@
+@import '../../styles/base';
+
+$color-secondary: var(--color-secondary);
+$color-white: var(--color-white);
+
+.galerieThump {
+  width: 100%;
+  height: 100%;
+}
+
+.galerie {
+  width: 100%;
+  margin: 2rem auto;
+  position: relative;
+  border: 0.5rem solid $color-secondary;
+  overflow: hidden;
+
+  a {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &:hover h3 {
+    transform: scale(1.1) rotate(0.02deg);
+  }
+  h3 {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
+    margin: 0;
+    z-index: 1;
+    color: $color-white;
+    font-size: 7vw;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    transition: all 0.5s;
+    backface-visibility: hidden;
+
+    @media only screen and (min-width: $bp-smallest) {
+      font-size: 3vw;
+    }
+    @media only screen and (min-width: $bp-largest) {
+      font-size: 3.8rem;
+    }
+  }
+
+  &:hover img {
+    filter: brightness(0.8);
+  }
+}
+
+.galerieThump {
+  grid-row: 1;
+  grid-column: 1;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.5);
+  transition: all 0.5s;
+
+  img {
+    transition: all 0.5s !important;
+  }
+}

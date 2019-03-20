@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import GalerieView from '../components/galerie-view/galerieView'
+import styles from './galerie.module.scss'
 
 export const query = graphql`
   query galeriePageQuery {

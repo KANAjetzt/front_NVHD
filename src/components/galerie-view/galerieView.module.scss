@@ -4,59 +4,13 @@
 $color-secondary: var(--color-secondary);
 $color-white: var(--color-white);
 
-.galerie {
-  width: 100%;
-  margin: 2rem auto;
-  position: relative;
-  border: 0.5rem solid $color-secondary;
+.galerieWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  grid-gap: 1rem;
+  margin: 0;
 
-  a {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  &:hover h3 {
-    transform: scale(1.1);
-  }
-  h3 {
-    grid-row: 1;
-    grid-column: 1;
-    // position: absolute;
-    align-self: center;
-    justify-self: center;
-    margin: 0;
-    z-index: 1;
-    color: $color-white;
-    font-size: 6vw;
-    font-weight: 400;
-    font-style: italic;
-    letter-spacing: 2px;
-    white-space: nowrap;
-    // transform-origin: center;
-    transition: all 0.5s;
-
-    @media only screen and (min-width: $bp-largest) {
-      font-size: 7.6rem;
-    }
-  }
-
-  &:hover img {
-    filter: brightness(0.8);
-  }
-}
-
-.GalerieThump {
-  grid-row: 1;
-  grid-column: 1;
-  width: 100%;
-  height: auto;
-  filter: brightness(0.5);
-  transition: all 0.5s;
-
-  img {
-    transition: all 0.5s !important;
+  @media only screen and (min-width: $bp-smallest) {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
 }

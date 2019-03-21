@@ -1,7 +1,10 @@
 import BaseBlockContent from '@sanity/block-content-to-react'
 import React from 'react'
-
 import typography from './typography.module.scss'
+import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity'
+import Img from 'gatsby-image'
+
+const sanityConfig = { projectId: '74ftimmm', dataset: 'production' }
 
 const serializers = {
   types: {
@@ -37,6 +40,18 @@ const serializers = {
         default:
           return <p className={typography.paragraph}>{props.children}</p>
       }
+    },
+    image(data) {
+      if (data.node.asset._ref) {
+        const fluidProps = getFluidGatsbyImage(
+          data.node.asset._ref,
+          { maxWidth: 400 },
+          sanityConfig
+        )
+        console.log(fluidProps)
+        return <Img fluid={fluidProps} />
+      }
+      return ''
     },
   },
 }

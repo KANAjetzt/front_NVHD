@@ -15,7 +15,7 @@ const ImageCompVereinsfiguren = () => (
               bild {
                 asset {
                   fluid(maxWidth: 400) {
-                    ...GatsbySanityImageFluid
+                    ...GatsbySanityImageFluid_noBase64
                   }
                   path
                 }

@@ -13,6 +13,7 @@ class Figuren extends React.Component {
             key={figur.node.id}
             FigurKey={figur.node.id}
             img={`https://cdn.sanity.io/${figur.node.bild.asset.path}`}
+            fluid={figur.node.bild.asset.fluid}
             heading={figur.node.name}
             text={figur.node.description}
           />

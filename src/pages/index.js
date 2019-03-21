@@ -18,7 +18,7 @@ const indexPage = props => {
 
         <h2 className={styles.h2}>
           HEU !<br />
-          <span className={styles.h2Span}>LICHER !</span>
+          <span className={styles.h2Span}>LIECHER !</span>
         </h2>
       </section>
       <section className={styles.unserVerein}>

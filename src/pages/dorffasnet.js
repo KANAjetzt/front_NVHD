@@ -18,6 +18,9 @@ export const query = graphql`
             _type
             asset {
               path
+              fluid(maxWidth: 400) {
+                ...GatsbySanityImageFluid_noBase64
+              }
             }
           }
         }

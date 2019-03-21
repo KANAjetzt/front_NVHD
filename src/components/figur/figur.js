@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import styles from './figur.module.scss'
+import Img from 'gatsby-image'
 
 export default class Figur extends Component {
   render() {
+    console.log(this.props)
     return (
       <div className={styles.figur}>
-        <img className={styles.img} src={this.props.img} />
+        <Img className={styles.img} fluid={this.props.fluid} />
         <h3 className={styles.heading}> {this.props.heading} </h3>
         <p className={styles.text}>{this.props.text}</p>
       </div>

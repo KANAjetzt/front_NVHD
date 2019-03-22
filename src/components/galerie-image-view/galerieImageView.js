@@ -4,6 +4,8 @@ import GallerySlider from '../galeire-image-slide/galerieImageSlide'
 import Gallery from 'react-photo-gallery'
 import ImgPrep from './gatsbyImagePrepare'
 import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity'
+import { Link } from 'gatsby'
+import BtnBack from '../btn-back/btnBack'
 
 export default class galerieImageView extends React.Component {
   constructor() {
@@ -92,13 +94,16 @@ export default class galerieImageView extends React.Component {
   }
 
   render() {
-    console.log(this.props)
-    console.log(this.state)
     return (
       <React.Fragment>
-        {this.props.stuff.title && (
-          <h2 className={styles.heading}>{this.props.stuff.title}</h2>
-        )}
+        <div className={styles.semiHeader}>
+          <Link to="/galerie">
+            <BtnBack />
+          </Link>
+          {this.props.stuff.title && (
+            <h2 className={styles.heading}>{this.props.stuff.title}</h2>
+          )}
+        </div>
         {this.state.showSlider && (
           <GallerySlider
             images={this.state.images}

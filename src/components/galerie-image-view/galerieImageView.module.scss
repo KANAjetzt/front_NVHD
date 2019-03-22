@@ -9,6 +9,11 @@ $color-secondary: var(--color-secondary);
   width: 100vw;
   height: 100vh;
 }
+
+.semiHeader {
+  display: flex;
+}
+
 .heading {
   font-size: 8vw;
   margin-bottom: 2rem;

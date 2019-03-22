@@ -1,6 +1,7 @@
 import BaseBlockContent from '@sanity/block-content-to-react'
 import React from 'react'
 import typography from './typography.module.scss'
+import imageStyle from './image.module.scss'
 import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity'
 import Img from 'gatsby-image'
 
@@ -49,7 +50,7 @@ const serializers = {
           sanityConfig
         )
         console.log(fluidProps)
-        return <Img fluid={fluidProps} />
+        return <Img fluid={fluidProps} className={imageStyle.imageWrapper} />
       }
       return ''
     },

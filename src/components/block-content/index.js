@@ -49,7 +49,6 @@ const serializers = {
           { maxWidth: 400 },
           sanityConfig
         )
-        console.log(fluidProps)
         return <Img fluid={fluidProps} className={imageStyle.imageWrapper} />
       }
       return ''

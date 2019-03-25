@@ -26,7 +26,6 @@ const ImageCompVereinsfiguren = () => (
       }
     `}
     render={data => {
-      console.log(data)
       return (
         <>
           <div className={styles.figurenImagesBox}>

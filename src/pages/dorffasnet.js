@@ -30,8 +30,6 @@ export const query = graphql`
 `
 
 const dorffasnetPage = ({ data, ...props }) => {
-  console.log(data)
-
   return (
     <Layout currentPath={props.location.pathname}>
       <SEO title="Figuren" keywords={[`Figuren`, `Hardmännle`, `Heulicher`]} />

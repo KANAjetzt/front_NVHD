@@ -4,7 +4,6 @@ import { Link } from 'gatsby'
 import './galerie.scss'
 
 export default function Galerie(props) {
-  console.log(props)
   return (
     <div className={'galerie'}>
       <Link to={`/galerie/${props.data.node.slug.current}/`}>

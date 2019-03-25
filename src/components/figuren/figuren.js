@@ -5,7 +5,6 @@ import Figur from '../figur/figur'
 
 class Figuren extends React.Component {
   render() {
-    console.log(this.props.data)
     return (
       <div className={styles.figuren}>
         {this.props.data.page.edges.map(figur => (

@@ -60,7 +60,6 @@ export default class galerieImageView extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props)
     this.props.stuff.galerie.bild.forEach(bild => {
       this.setState(prevState => ({
         images: [

@@ -1,8 +1,13 @@
+@import '../../styles/base';
+
 $color-primary: var(--color-primary);
 
-$IconThickness: 4px;
+// $IconThickness: 5px;
+$IconThicknessBPSmallest: 5px;
+$IconThickness: 3px;
 $IconGap: 0;
-$IconTranslate: -7px;
+// $IconTranslate: -7px;
+$IconTranslate: -10px;
 
 .IconBox {
   position: sticky;
@@ -14,11 +19,7 @@ $IconTranslate: -7px;
   outline: none;
   padding: 0;
   cursor: pointer;
-  width: 5rem;
-  height: 5rem;
   text-align: center;
-  margin-right: 2rem;
-  transform: translateY(-3px);
 }
 
 // mitte
@@ -26,21 +27,35 @@ $IconTranslate: -7px;
   position: relative;
   display: inline-block;
   border-bottom: $IconThickness solid $color-primary;
-  width: 3rem;
+  width: 20px;
   transition: all 0.5s ease-in-out;
+
+  @media only screen and (min-width: $bp-smallest) {
+    width: 45px;
+    border-bottom: $IconThicknessBPSmallest solid $color-primary;
+  }
 
   // oben
   &::before {
     content: '';
     display: block;
     position: absolute;
-    top: -1.1rem;
-    width: 2rem;
+    // top: -14px;
+    top: -4px;
+    // width: 30px;
+    width: 10px;
     z-index: 2000;
     border-bottom: $IconThickness solid $color-primary;
     margin-bottom: $IconGap;
-    transform: rotate(-45deg) translate($IconTranslate);
+    transform: rotate(-45deg);
     transition: all 0.5s ease-in-out;
+
+    @media only screen and (min-width: $bp-smallest) {
+      border-bottom: $IconThicknessBPSmallest solid $color-primary;
+      top: -12px;
+      left: -2px;
+      width: 30px;
+    }
   }
 
   // unten
@@ -48,11 +63,19 @@ $IconTranslate: -7px;
     content: '';
     display: block;
     position: absolute;
-    top: 1.1rem;
-    width: 2rem;
+    // top: 14px;
+    top: 4px;
+    width: 10px;
     border-bottom: $IconThickness solid $color-primary;
     margin-bottom: $IconGap;
-    transform: rotate(45deg) translate($IconTranslate);
+    transform: rotate(45deg);
     transition: all 0.5s ease-in-out;
+
+    @media only screen and (min-width: $bp-smallest) {
+      border-bottom: $IconThicknessBPSmallest solid $color-primary;
+      top: 12px;
+      left: -2px;
+      width: 30px;
+    }
   }
 }

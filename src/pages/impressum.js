@@ -48,16 +48,18 @@ const impressumPage = ({ data }) => {
         <div>
           <p>Narrenverein 'Heuliecher' Heudorf im Hegau 1984 e.V.</p>
           <br />
-          <p>
+          <div>
             <h3 className={styles.presi}>Präsident</h3>
             <br />
-            {data.president.edges[0].node.name} <br />
-            {data.president.edges[0].node.adresse.strassehausnummer} <br />
-            {data.president.edges[0].node.adresse.postleizahl}{' '}
-            {data.president.edges[0].node.adresse.ort} <br />
-            {data.president.edges[0].node.telefon} <br />
-            {data.president.edges[0].node.email}
-          </p>
+            <p>
+              {data.president.edges[0].node.name} <br />
+              {data.president.edges[0].node.adresse.strassehausnummer} <br />
+              {data.president.edges[0].node.adresse.postleizahl}{' '}
+              {data.president.edges[0].node.adresse.ort} <br />
+              {data.president.edges[0].node.telefon} <br />
+              {data.president.edges[0].node.email}
+            </p>
+          </div>
 
           <br />
 

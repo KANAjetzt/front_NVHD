@@ -12,7 +12,6 @@ import { node } from 'prop-types'
 
 class GalerieView extends React.Component {
   render() {
-    console.log(this.props)
     return (
       <React.Fragment>
         <div className={styles.galerieWrapper}>

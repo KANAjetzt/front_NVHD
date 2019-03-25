@@ -12,11 +12,14 @@ $color-secondary: var(--color-secondary);
 
 .semiHeader {
   display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .heading {
-  font-size: 8vw;
-  margin-bottom: 2rem;
+  font-size: 6vw;
+  margin-bottom: 0;
+  margin-left: 1rem;
 
   @media only screen and (min-width: $bp-smallest) {
     font-size: 4.7rem;

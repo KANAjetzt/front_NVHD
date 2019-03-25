@@ -7,7 +7,6 @@ import ImageCompVereinsfiguren from '../components/image-comp-Vereinsfiguren/ima
 import Termine from '../components/termine/termine'
 
 const indexPage = props => {
-  console.log(props)
   return (
     <Layout currentPath={props.location.pathname}>
       <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />

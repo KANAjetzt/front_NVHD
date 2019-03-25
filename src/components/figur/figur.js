@@ -4,7 +4,6 @@ import Img from 'gatsby-image'
 
 export default class Figur extends Component {
   render() {
-    console.log(this.props)
     return (
       <div className={styles.figur}>
         <Img className={styles.img} fluid={this.props.fluid} />

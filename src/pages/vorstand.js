@@ -54,7 +54,6 @@ export const query = graphql`
 `
 
 const vorstandPage = ({ data, ...props }) => {
-  console.log(data)
   return (
     <Layout currentPath={props.location.pathname}>
       <section className={styles.pageVorstand}>

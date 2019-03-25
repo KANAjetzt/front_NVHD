@@ -28,8 +28,6 @@ export const query = graphql`
 `
 
 const galeriePage = ({ data, ...props }) => {
-  console.log(data)
-
   return (
     <Layout currentPath={props.location.pathname}>
       <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />

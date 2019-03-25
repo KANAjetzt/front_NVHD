@@ -1,6 +1,7 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity'
+import styles from './gatsbyImagePrepare.module.scss'
 
 export default function GatsbyImagePrepare(props) {
   const sanityConfig = { projectId: '74ftimmm', dataset: 'production' }
@@ -11,8 +12,6 @@ export default function GatsbyImagePrepare(props) {
     sanityConfig
   )
 
-  // console.log(fluidProps)
-
   return (
     <div
       style={{
@@ -20,6 +19,7 @@ export default function GatsbyImagePrepare(props) {
         height: props.photo.height,
         width: props.photo.width,
       }}
+      className={styles.image}
       onClick={e => props.onClick(e, props)}
     >
       <Img fluid={fluidProps} />

@@ -30,6 +30,7 @@ export const query = graphql`
           name
           rollen
           email
+          telefon
           adresse {
             strassehausnummer
             postleizahl
@@ -82,6 +83,7 @@ const kontaktPage = ({ data, ...props }) => {
             {data.president.edges[0].node.adresse.postleizahl}{' '}
             {data.president.edges[0].node.adresse.ort}
           </p>
+          <p>{data.president.edges[0].node.telefon}</p>
           <p>{data.president.edges[0].node.email}</p>
         </div>
 

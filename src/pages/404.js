@@ -1,13 +1,25 @@
 import React from 'react'
-
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import Nav from '../components/navigation/navigation'
+import BtnCta from '../components/Btn-Cta/btnCta'
+import styles from './404.module.scss'
 
 const NotFoundPage = () => (
   <Layout>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <section className={styles.content}>
+      <SEO title="404: Not found" />
+      <h2>Seite nicht gefunden 🤯</h2>
+      <p> Hoffentlich kann dir die Navigation weiterhelfen:</p>
+      <br />
+      <div className={styles.navbackground}>
+        <Nav />
+      </div>
+      <br />
+      <br />
+      <p> Ansonsten Melde dich einfach direkt bei uns:</p>
+      <BtnCta link="/kontakt">Kontakt</BtnCta>
+    </section>
   </Layout>
 )
 

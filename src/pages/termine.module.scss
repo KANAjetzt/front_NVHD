@@ -7,9 +7,13 @@ $color-secondary: var(--color-secondary);
 }
 
 .termine {
-  margin-bottom: 5rem;
+  margin-left: 2rem;
 }
 
 .sectionTermine {
   background-color: $color-secondary;
+}
+
+.content {
+  align-self: flex-start;
 }

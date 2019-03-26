@@ -1,0 +1,11 @@
+@import '../styles/base';
+
+$colorTertiary: var(--color-tertiary);
+
+.content {
+  align-self: center;
+}
+
+.navbackground {
+  background-color: $colorTertiary;
+}

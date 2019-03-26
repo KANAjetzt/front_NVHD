@@ -7,17 +7,43 @@ class Termine extends React.Component {
   state = {
     termine: [],
   }
-  prepareData = data => {}
 
-  componentWillMount() {
+  prepareData = () => {
     this.props.data.termine.edges.filter(termin => {
       const currentDate = new Date()
       const terminDate = new Date(`${termin.node.date}`)
       if (terminDate > currentDate) {
-        this.setState({
-          termine: [...termin],
-        })
+        this.setState(prevState => ({
+          termine: [...prevState.termine, termin],
+        }))
       }
+    })
+  }
+
+  sortDates = () => {
+    this.state.termine.sort((a, b) => {
+      console.log(a)
+      console.log(b)
+      return new Date(b.node.date) - new Date(a.node.date)
+    })
+  }
+
+  componentWillMount() {
+    let date = []
+    // filter out the dates that are older then today
+    this.props.data.termine.edges.filter(termin => {
+      const currentDate = new Date()
+      const terminDate = new Date(`${termin.node.date}`)
+      if (terminDate > currentDate) {
+        date.push(termin)
+      }
+    })
+    date.sort((a, b) => {
+      return new Date(b.node.date) - new Date(a.node.date)
+    })
+
+    this.setState({
+      termine: date.reverse(),
     })
   }
 

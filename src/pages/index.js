@@ -33,7 +33,7 @@ const indexPage = props => {
 
       <section className={styles.terminSection}>
         <h3>
-          Fasnet <br />
+          Termine <br />
           <span>2019</span>
         </h3>
 

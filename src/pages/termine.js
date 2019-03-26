@@ -9,14 +9,15 @@ const terminePage = props => {
     <section className={styles.sectionTermine}>
       <Layout currentPath={props.location.pathname}>
         <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
-
-        <h2>
-          Fasnet <br />
-          <span className={styles.h2Span}>2019</span>
-        </h2>
-        <div className={styles.termine}>
-          <Termine />
-        </div>
+        <section className={styles.content}>
+          <h2>
+            Termine <br />
+            <span className={styles.h2Span}>2019</span>
+          </h2>
+          <div className={styles.termine}>
+            <Termine />
+          </div>
+        </section>
       </Layout>
     </section>
   )

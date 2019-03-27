@@ -37,8 +37,6 @@ export const query = graphql`
 `
 
 const impressumPage = ({ data }) => {
-  console.log(data)
-
   return (
     <section className={styles.impressumPage}>
       <Layout>

@@ -1,0 +1,11 @@
+@import '../styles/base';
+
+$colorPrimary: var(--color-primary);
+
+.content {
+  a {
+    text-decoration: none;
+    color: $colorPrimary;
+    overflow-wrap: break-word;
+  }
+}

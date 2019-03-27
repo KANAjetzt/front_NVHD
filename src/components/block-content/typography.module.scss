@@ -65,19 +65,9 @@
  */
 
 .paragraph {
-  font-size: var(--font-base-size);
-  line-height: var(--font-base-line-height);
+  font-size: 1.4rem;
+  line-height: 1.6;
   margin: 1rem 0 2rem 0;
-
-  @media (--media-min-small) {
-    font-size: var(--font-base-size);
-    line-height: var(--font-base-line-height);
-  }
-
-  @media (--media-min-medium) {
-    font-size: var(--font-large-size);
-    line-height: var(--font-large-line-height);
-  }
 }
 
 .blockQuote {
@@ -102,37 +92,19 @@
 }
 
 .responsiveTitle2 {
-  font-weight: 900;
-  font-size: var(--font-large-size);
-  line-height: var(--font-large-line-height);
-  margin: 1.5rem 0 0.5rem;
-
-  @media (--media-min-small) {
-    font-size: var(--font-title3-size);
-    line-height: var(--font-title3-line-height);
-  }
-
-  @media (--media-min-medium) {
-    font-size: var(--font-title2-size);
-    line-height: var(--font-title2-line-height);
-  }
+  font-size: 4.7rem;
+  font-family: var(--base-font);
+  font-weight: 700;
+  line-height: 0.9;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
 }
 
 .responsiveTitle3 {
-  font-weight: 900;
-  font-size: var(--font-title3-size);
-  line-height: var(--font-large-line-height);
-  margin: 1rem 0 0.5rem;
-
-  @media (--media-min-small) {
-    font-size: var(--font-large-size);
-    line-height: var(--font-large-line-height);
-  }
-
-  @media (--media-min-medium) {
-    font-size: var(--font-title3-size);
-    line-height: var(--font-title3-line-height);
-  }
+  padding-top: 2rem;
+  margin-bottom: 0;
+  font-size: 2rem;
+  font-weight: 400;
 }
 
 .responsiveTitle4 {

@@ -40,7 +40,8 @@ $color-white: var(--color-white);
     font-weight: 400;
     font-style: italic;
     letter-spacing: 2px;
-    white-space: nowrap;
+    text-align: center;
+    line-height: 1.2;
     transition: all 0.5s;
     backface-visibility: hidden;
 

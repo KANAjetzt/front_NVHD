@@ -84,13 +84,17 @@ const kontaktPage = ({ data, ...props }) => {
             {data.president.edges[0].node.adresse.ort}
           </p>
           <p>{data.president.edges[0].node.telefon}</p>
-          <p>{data.president.edges[0].node.email}</p>
+          <a href={`mailto:${data.president.edges[0].node.email}`}>
+            {data.president.edges[0].node.email}
+          </a>
         </div>
 
         <div>
           <h3>Kassier</h3>
           <p>{data.kassierer.edges[0].node.name}</p>
-          <p>{data.kassierer.edges[0].node.email}</p>
+          <a href={`mailto:${data.kassierer.edges[0].node.email}`}>
+            {data.kassierer.edges[0].node.email}
+          </a>
         </div>
       </section>
     </Layout>

@@ -4,8 +4,7 @@ $colorPrimary: var(--color-primary);
 
 .content {
   a {
-    text-decoration: none;
-    color: $colorPrimary;
-    overflow-wrap: break-word;
+    font-size: 1.4rem;
+    word-wrap: break-word;
   }
 }

@@ -6,7 +6,12 @@
     margin-bottom: 0;
   }
 
-  div p:last-child {
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  div > :last-child {
     margin-bottom: 2rem;
   }
 }

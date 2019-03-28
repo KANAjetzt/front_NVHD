@@ -8,6 +8,7 @@
   Codebase for 
 </h1>
 
+<h2>Overview</h2>
 <p>Build using Gatsby + Sanity. Features React-Images, performant masonry grid with react-photo-gallery and full gatsby-image implementation.</p>
 
 <h2>Tooling</h2>

@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://heuliecher.kana.jetzt/">
-    <img alt="Gatsby" src="https://cdn.sanity.io/images/74ftimmm/production/0b13f403bf734e27ebaf1d676492dea5611f3a09-276x153.png" width="60" />
+    <img alt="Gatsby" src="https://cdn.sanity.io/images/74ftimmm/production/0b13f403bf734e27ebaf1d676492dea5611f3a09-276x153.png" width="153" />
   </a>
 </p>
 

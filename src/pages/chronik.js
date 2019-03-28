@@ -21,7 +21,6 @@ export const query = graphql`
 `
 
 const chronikPage = ({ data, ...props }) => {
-  console.log(props)
   return (
     <section className={styles.chronikPage}>
       <Layout currentPath={props.location.pathname}>

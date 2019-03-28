@@ -4,8 +4,6 @@ import './image-gallery.scss'
 
 export default class GallerieImageSlide extends React.Component {
   render() {
-    console.log(this.props)
-
     return (
       <ImageSlider
         images={this.props.images}

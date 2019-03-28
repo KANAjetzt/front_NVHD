@@ -11,10 +11,10 @@
 <p>Build using Gatsby + Sanity. Features React-Images, performant masonry grid with react-photo-gallery and full gatsby-image implementation.</p>
 
 <h2>Tooling</h2>
-<ol>
+<ul>
 <li>Gatsby JS</li>
 <li>CSS Modules</li>
-
+<li>sanity.io as headless CMS / BYOF</li>
 <li>Performant masonry using react-photo-gallery</li>
 <li>Photo Lightbox with react-images</li>
-</ol>
+</ul>

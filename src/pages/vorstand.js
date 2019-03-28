@@ -59,7 +59,14 @@ const vorstandPage = ({ data, ...props }) => {
       <section className={styles.pageVorstand}>
         <SEO
           title="Vorstand"
-          keywords={[`vornstand`, `präsident`, `vizepräsident`]}
+          keywords={[
+            `vornstand`,
+            `präsident`,
+            `vizepräsident`,
+            `Kassier`,
+            `Schriftführer`,
+            `Elferrat`,
+          ]}
         />
         <h2>
           Der <br />

@@ -40,7 +40,7 @@ const impressumPage = ({ data }) => {
   return (
     <section className={styles.impressumPage}>
       <Layout>
-        <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
+        <SEO title="Impressum" />
         <h2>Impressum</h2>
 
         <div>

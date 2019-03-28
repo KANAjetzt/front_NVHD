@@ -61,7 +61,16 @@ const kontaktPage = ({ data, ...props }) => {
   return (
     <Layout currentPath={props.location.pathname}>
       <section className={styles.pageKontakt}>
-        <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
+        <SEO
+          title="Kontakt"
+          keywords={[
+            `Kontakt`,
+            `Info`,
+            `Information`,
+            `Präsident`,
+            `Postadresse`,
+          ]}
+        />
         <h2>
           dein <br />
           <span>Kontakt</span>

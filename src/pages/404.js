@@ -8,7 +8,7 @@ import styles from './404.module.scss'
 const NotFoundPage = () => (
   <Layout>
     <section className={styles.content}>
-      <SEO title="404: Not found" />
+      <SEO title="404: Seite nicht gefunden" />
       <h2>Seite nicht gefunden 🤯</h2>
       <p> Hoffentlich kann dir die Navigation weiterhelfen:</p>
       <br />

@@ -9,7 +9,15 @@ import Termine from '../components/termine/termine'
 const indexPage = props => {
   return (
     <Layout currentPath={props.location.pathname}>
-      <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
+      <SEO
+        title="Wilkommen"
+        keywords={[
+          `Narrenverein Heuliecher`,
+          `Heuliecher`,
+          `Heudorf`,
+          `Heudorf im Hegau`,
+        ]}
+      />
       <section>
         <p className={styles.brauchtumInSchönsterForm}>
           Brauchtum in seiner schönsten Form erleben

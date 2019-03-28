@@ -8,7 +8,7 @@ const terminePage = props => {
   return (
     <section className={styles.sectionTermine}>
       <Layout currentPath={props.location.pathname}>
-        <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
+        <SEO title="Termine" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
         <section className={styles.content}>
           <h2>
             Termine <br />

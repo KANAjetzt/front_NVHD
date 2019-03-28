@@ -30,7 +30,7 @@ export const query = graphql`
 const galeriePage = ({ data, ...props }) => {
   return (
     <Layout currentPath={props.location.pathname}>
-      <SEO title="Figuren" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
+      <SEO title="Galerie" keywords={[`Galerie`, `Bilder`, `Übersicht`]} />
       <h2>
         die <br />
         <span>Galerie</span>

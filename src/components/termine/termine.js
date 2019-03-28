@@ -22,8 +22,6 @@ class Termine extends React.Component {
 
   sortDates = () => {
     this.state.termine.sort((a, b) => {
-      console.log(a)
-      console.log(b)
       return new Date(b.node.date) - new Date(a.node.date)
     })
   }

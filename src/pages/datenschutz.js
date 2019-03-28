@@ -23,7 +23,7 @@ export const query = graphql`
 const datenschutzPage = ({ data }) => {
   return (
     <Layout>
-      <SEO title="Figuren" keywords={[`Datenschutz`]} />
+      <SEO title="Datenschutz" />
       <section className={styles.content}>
         <BlockContent blocks={data.page.edges[0].node._rawText} />
       </section>

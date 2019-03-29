@@ -1,6 +1,6 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity'
+import { getFluidGatsbyImage } from 'gatsby-source-sanity'
 import styles from './gatsbyImagePrepare.module.scss'
 
 export default function GatsbyImagePrepare(props) {

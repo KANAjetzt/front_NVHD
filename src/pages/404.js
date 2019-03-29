@@ -9,7 +9,12 @@ const NotFoundPage = () => (
   <Layout>
     <section className={styles.content}>
       <SEO title="404: Seite nicht gefunden" />
-      <h2>Seite nicht gefunden 🤯</h2>
+      <h2>
+        Seite nicht gefunden{' '}
+        <span role="img" aria-label="mindblown emoji">
+          🤯
+        </span>
+      </h2>
       <p> Hoffentlich kann dir die Navigation weiterhelfen:</p>
       <br />
       <div className={styles.navbackground}>

@@ -1,14 +1,13 @@
-import { Link, StaticQuery, graphql } from 'gatsby'
-import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+import propTypes from 'prop-types'
 import React from 'react'
-import styles from './navigation.module.scss'
 import headerStyles from './navigation-header.module.scss'
 import footerStyles from './navigation-footer.module.scss'
 import Heulicher from '../svg/heulicher'
 
 class Navigation extends React.Component {
   checkStyle = styleClass => {
-    if (this.props.style === 'header') {
+    if (this.props.type === 'header') {
       return headerStyles[styleClass]
     }
     return footerStyles[styleClass]
@@ -92,6 +91,10 @@ class Navigation extends React.Component {
       </nav>
     )
   }
+}
+
+Navigation.propTypes = {
+  type: propTypes.string,
 }
 
 export default Navigation

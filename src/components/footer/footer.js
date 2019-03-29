@@ -1,4 +1,4 @@
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import React from 'react'
 import styles from './footer.module.scss'
 import Navigation from '../navigation/navigation'
@@ -11,7 +11,7 @@ class Footer extends React.Component {
   render() {
     return (
       <footer className={styles.footer}>
-        <Navigation style={'footer'} />
+        <Navigation type={'footer'} />
         <NavigationSocial />
         <NavigationRechtliches />
       </footer>
@@ -41,4 +41,3 @@ export default props => (
     render={data => <Footer data={data} {...props} />}
   />
 )
-

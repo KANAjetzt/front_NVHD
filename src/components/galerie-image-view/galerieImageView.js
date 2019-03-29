@@ -3,23 +3,49 @@ import styles from './galerieImageView.module.scss'
 import GallerySlider from '../galeire-image-slide/galerieImageSlide'
 import Gallery from 'react-photo-gallery'
 import ImgPrep from './gatsbyImagePrepare'
-import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity'
+import { getFluidGatsbyImage } from 'gatsby-source-sanity'
 import { Link } from 'gatsby'
 import BtnBack from '../btn-back/btnBack'
 
 export default class galerieImageView extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       showSlider: false,
-      imagesID: [],
-      images: [],
+      imagesID: this.getImageIDs(props),
+      images: this.getImages(props),
       currentImage: 0,
     }
     this.closeSlider = this.closeSlider.bind(this)
     this.openSlider = this.openSlider.bind(this)
     this.gotoNext = this.gotoNext.bind(this)
     this.gotoPrevious = this.gotoPrevious.bind(this)
+    this.getImages = this.getImages.bind(this)
+    this.getImageIDs = this.getImageIDs.bind(this)
+  }
+
+  // get the src link for all images in this galery
+  getImages(props) {
+    const images = []
+    props.stuff.galerie.bild.forEach(bild => {
+      images.push({
+        src: `https://cdn.sanity.io/${bild.asset.path}`,
+      })
+    })
+    return images
+  }
+
+  // get the Image Sanity IDs  to later convert them into fluid propertys for gatsby-image
+  getImageIDs(props) {
+    const imageIDs = []
+    props.stuff.galerie.bild.forEach(bild => {
+      imageIDs.push({
+        src: bild.asset._id,
+        width: Math.round(bild.asset.metadata.dimensions.width),
+        height: Math.round(bild.asset.metadata.dimensions.height),
+      })
+    })
+    return imageIDs
   }
 
   openSlider(event, obj) {
@@ -57,27 +83,6 @@ export default class galerieImageView extends React.Component {
     )
 
     return fluidProps
-  }
-
-  componentWillMount() {
-    this.props.stuff.galerie.bild.forEach(bild => {
-      this.setState(prevState => ({
-        images: [
-          ...prevState.images,
-          {
-            src: `https://cdn.sanity.io/${bild.asset.path}`,
-          },
-        ],
-        imagesID: [
-          ...prevState.imagesID,
-          {
-            src: bild.asset._id,
-            width: Math.round(bild.asset.metadata.dimensions.width),
-            height: Math.round(bild.asset.metadata.dimensions.height),
-          },
-        ],
-      }))
-    })
   }
 
   componentDidMount() {

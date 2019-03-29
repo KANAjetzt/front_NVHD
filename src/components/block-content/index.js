@@ -2,7 +2,7 @@ import BaseBlockContent from '@sanity/block-content-to-react'
 import React from 'react'
 import typography from './typography.module.scss'
 import imageStyle from './image.module.scss'
-import { getFluidGatsbyImage, getFixedGatsbyImage } from 'gatsby-source-sanity'
+import { getFluidGatsbyImage } from 'gatsby-source-sanity'
 import Img from 'gatsby-image'
 
 const sanityConfig = { projectId: '74ftimmm', dataset: 'production' }

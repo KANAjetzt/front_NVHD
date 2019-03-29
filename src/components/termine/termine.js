@@ -4,51 +4,41 @@ import styles from './termine.module.scss'
 import Termin from '../termin/termin'
 
 class Termine extends React.Component {
-  state = {
-    termine: [],
+  constructor(props) {
+    super(props)
+    this.state = {
+      termine: this.prepareDates(props),
+    }
+    this.prepareDates = this.prepareDates.bind(this)
   }
 
-  prepareData = () => {
-    this.props.data.termine.edges.filter(termin => {
-      const currentDate = new Date()
-      const terminDate = new Date(`${termin.node.date}`)
-      if (terminDate > currentDate) {
-        this.setState(prevState => ({
-          termine: [...prevState.termine, termin],
-        }))
-      }
+  prepareDates(props) {
+    return this.sortDates(this.filterDates(props))
+  }
+
+  sortDates(termine) {
+    return termine.sort((a, b) => {
+      return new Date(a.node.date) - new Date(b.node.date)
     })
   }
 
-  sortDates = () => {
-    this.state.termine.sort((a, b) => {
-      return new Date(b.node.date) - new Date(a.node.date)
-    })
-  }
-
-  componentWillMount() {
-    let date = []
+  filterDates(props) {
     // filter out the dates that are older then today
-    this.props.data.termine.edges.filter(termin => {
+    return props.data.termine.edges.filter(termin => {
       const currentDate = new Date()
       const terminDate = new Date(`${termin.node.date}`)
       if (terminDate > currentDate) {
-        date.push(termin)
+        return termin
       }
-    })
-    date.sort((a, b) => {
-      return new Date(b.node.date) - new Date(a.node.date)
-    })
-
-    this.setState({
-      termine: date.reverse(),
+      return undefined
     })
   }
 
   render() {
+    console.log(this.state)
     return (
       <React.Fragment>
-        {this.state.termine ? (
+        {this.state.termine[0] ? (
           <div className={styles.termine}>
             {this.state.termine.map(termin => (
               <Termin
@@ -60,7 +50,12 @@ class Termine extends React.Component {
             ))}
           </div>
         ) : (
-          <p>Jemand hat vergessen hier die nächsten Termine ein zu tragen 🏃</p>
+          <p>
+            Jemand hat vergessen hier die nächsten Termine ein zu tragen{' '}
+            <span role="img" aria-label="running man emoji">
+              🏃
+            </span>
+          </p>
         )}
       </React.Fragment>
     )

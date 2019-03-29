@@ -2,13 +2,6 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import styles from './galerieView.module.scss'
 import Galerie from '../galerie/galerie'
-import { node } from 'prop-types'
-
-/********
-  TODO:
-  - Take the first image of a "galerie" as thump
-  - link to a galerie with all the images
-*/
 
 class GalerieView extends React.Component {
   render() {

@@ -1,4 +1,3 @@
-import { StaticQuery, graphql } from 'gatsby'
 import React from 'react'
 import styles from './figuren.module.scss'
 import Figur from '../figur/figur'

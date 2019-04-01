@@ -74,6 +74,7 @@ export default class galerieImageView extends React.Component {
     })
   }
 
+  // Get The Fluid props for gatsby-image from Sanity
   getFluidProps(imagesID) {
     const sanityConfig = { projectId: '74ftimmm', dataset: 'production' }
     const fluidProps = getFluidGatsbyImage(

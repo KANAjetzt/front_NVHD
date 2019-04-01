@@ -10,6 +10,12 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-137417026-1',
+      },
+    },
+    {
       resolve: 'gatsby-source-sanity',
       options: {
         projectId: '74ftimmm',

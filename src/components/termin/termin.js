@@ -3,11 +3,24 @@ import styles from './termin.module.scss'
 
 export default class Termin extends Component {
   formatDate = date => {
-    let newDate = date.split('-')
-    newDate = newDate.slice(1, 3)
-    newDate.splice(0, 1, `${newDate.splice(1, 1, newDate[0])}`)
-    newDate = newDate.join('.')
-    return newDate
+    const options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+    }
+
+    return `${this.parseISOString(date).toLocaleDateString(
+      'de-DE',
+      options
+    )} Uhr`
+  }
+
+  parseISOString(s) {
+    const b = s.split(/\D+/)
+    return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]))
   }
 
   render() {

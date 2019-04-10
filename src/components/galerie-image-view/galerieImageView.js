@@ -27,7 +27,7 @@ export default class galerieImageView extends React.Component {
   // get the src link for all images in this galery
   getImages(props) {
     const images = []
-    props.stuff.galerie.bild.forEach(bild => {
+    props.stuff.allSanityGalerie.edges[0].node.galerie.bild.forEach(bild => {
       images.push({
         src: `https://cdn.sanity.io/${bild.asset.path}`,
       })
@@ -38,7 +38,7 @@ export default class galerieImageView extends React.Component {
   // get the Image Sanity IDs  to later convert them into fluid propertys for gatsby-image
   getImageIDs(props) {
     const imageIDs = []
-    props.stuff.galerie.bild.forEach(bild => {
+    props.stuff.allSanityGalerie.edges[0].node.galerie.bild.forEach(bild => {
       imageIDs.push({
         src: bild.asset._id,
         width: Math.round(bild.asset.metadata.dimensions.width),

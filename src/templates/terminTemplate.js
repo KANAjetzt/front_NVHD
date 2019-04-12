@@ -19,7 +19,11 @@ export const query = graphql`
           id
           date
           title
-          lokation
+          locationName
+          location {
+            lat
+            lng
+          }
           image {
             asset {
               path

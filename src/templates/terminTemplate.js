@@ -2,12 +2,15 @@ import React from 'react'
 import Layout from '../components/layout'
 import TerminDetailed from '../components/termin-detailed/terminDetailed'
 import { graphql } from 'gatsby'
+import styles from './terminTemplate.module.scss'
 
 const TerminTemplate = ({ data }) => {
   return (
-    <Layout>
-      <TerminDetailed stuff={data} />
-    </Layout>
+    <section className={styles.background}>
+      <Layout>
+        <TerminDetailed stuff={data} />
+      </Layout>
+    </section>
   )
 }
 
@@ -19,6 +22,7 @@ export const query = graphql`
           id
           date
           title
+          _rawDescription
           locationName
           location {
             lat
@@ -27,7 +31,7 @@ export const query = graphql`
           image {
             asset {
               path
-              fluid(maxWidth: 400) {
+              fluid(maxWidth: 2000) {
                 ...GatsbySanityImageFluid_noBase64
               }
             }

@@ -1,0 +1,38 @@
+$color-whiteRGBA: rgba(254, 254, 254, 0.6);
+
+.content {
+  margin-top: -3rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: min-content 1fr;
+  align-items: center;
+  width: 100vw;
+  height: 20vh;
+  margin-left: -1rem;
+}
+
+.title {
+  margin-bottom: 0;
+  padding: 1rem;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  z-index: 2;
+  background-color: $color-whiteRGBA;
+}
+.datum {
+  padding: 1rem;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  z-index: 2;
+  background-color: $color-whiteRGBA;
+}
+
+.img {
+  grid-column: 1 / 3;
+  grid-row: 1/ 3;
+  widows: 100%;
+  height: 100%;
+}

@@ -1,0 +1,14 @@
+@import '../styles/base';
+
+$color-secondary: var(--color-secondary);
+
+.background {
+  background-color: $color-secondary;
+
+  section {
+    padding: 0;
+  }
+
+  div {
+  }
+}

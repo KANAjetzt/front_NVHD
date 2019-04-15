@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styles from './terminDetailed.module.scss'
+import GoogleMap from '../googleMap/googleMap'
 
 export default class Termin extends Component {
   formatDate = date => {
@@ -27,7 +28,16 @@ export default class Termin extends Component {
     console.log(this.props)
     return (
       <div className={styles.termin}>
-        <p>new Termin</p>
+        <h2>{}</h2>
+
+        <GoogleMap
+          initialCenter={
+            this.props.stuff.allSanityTermin.edges[0].node.location
+          }
+          markerTitle={
+            this.props.stuff.allSanityTermin.edges[0].node.locationName
+          }
+        />
       </div>
     )
   }

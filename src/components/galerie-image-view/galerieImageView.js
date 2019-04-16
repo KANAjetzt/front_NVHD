@@ -105,8 +105,10 @@ export default class galerieImageView extends React.Component {
           <Link to="/galerie">
             <BtnBack />
           </Link>
-          {this.props.stuff.title && (
-            <h2 className={styles.heading}>{this.props.stuff.title}</h2>
+          {this.props.stuff.allSanityGalerie.edges[0].node.title && (
+            <h2 className={styles.heading}>
+              {this.props.stuff.allSanityGalerie.edges[0].node.title}
+            </h2>
           )}
         </div>
         {this.state.showSlider && (

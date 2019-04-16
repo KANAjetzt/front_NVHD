@@ -50,12 +50,7 @@ class Termine extends React.Component {
             ))}
           </div>
         ) : (
-          <p>
-            Jemand hat vergessen hier die nächsten Termine ein zu tragen{' '}
-            <span role="img" aria-label="running man emoji">
-              🏃
-            </span>
-          </p>
+          <p />
         )}
       </React.Fragment>
     )

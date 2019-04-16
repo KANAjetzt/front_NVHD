@@ -14,14 +14,12 @@ export class GoogleMap extends Component {
         streetViewControl={false}
         zoomControl={false}
         style={{
-          width: '100vw',
-          height: '40rem',
-          marginLeft: '-1rem',
+          width: '100%',
+          height: '100%',
         }}
         containerStyle={{
-          width: '100vw',
-          height: '40rem',
-          marginLeft: '-1rem',
+          width: '100%',
+          height: '100%',
         }}
         styles={googleMapStyle}
       >

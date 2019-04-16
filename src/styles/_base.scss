@@ -13,6 +13,11 @@
   --base-font: 'Noto Sans', sans-serif;
 }
 
+$base-font: var(--base-font);
+
+$color-primary: var(--color-primary);
+$color-grey-medium: var(--color-grey-medium);
+
 $bp-smallest: 900px;
 $bp-medium: 1200px;
 $bp-mediumer: 1440px;

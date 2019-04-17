@@ -35,7 +35,6 @@ class Termine extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <React.Fragment>
         {this.state.termine[0] ? (

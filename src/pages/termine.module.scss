@@ -7,7 +7,10 @@ $color-secondary: var(--color-secondary);
 }
 
 .termine {
-  margin-left: 2rem;
+  margin-left: 0;
+  @media only screen and (min-width: $bp-smallest) {
+    margin-left: 2rem;
+  }
 }
 
 .sectionTermine {

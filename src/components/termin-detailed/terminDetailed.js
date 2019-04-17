@@ -8,7 +8,6 @@ import { getDate, getTime, getWeekDay } from '../../lib/datumUhrzeit'
 
 export default class Termin extends Component {
   render() {
-    console.log(this.props)
     const {
       date,
       id,
@@ -19,9 +18,6 @@ export default class Termin extends Component {
       _rawDescription,
     } = this.props.stuff.allSanityTermin.edges[0].node
 
-    console.log(getDate(date))
-    console.log(getTime(date))
-    console.log(getWeekDay(date))
     return (
       <section className={styles.content}>
         <section className={styles.hero}>

@@ -4,7 +4,6 @@ import Datum from '../datum/datum'
 
 export default class Termin extends Component {
   render() {
-    console.log(this.props)
     return (
       <div className={styles.termin}>
         <Datum date={this.props.date} />

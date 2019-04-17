@@ -3,7 +3,10 @@
 $color-white: var(--color-white);
 
 .termin {
-  padding: 1rem;
+  padding: 0;
+  @media only screen and (min-width: $bp-smallest) {
+    padding: 1rem;
+  }
 }
 
 .date {

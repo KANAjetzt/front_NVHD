@@ -69,7 +69,7 @@ const vorstandPage = ({ data, ...props }) => {
           ]}
         />
         <h2>
-          Der <br />
+          der <br />
           <span>Vorstand</span>
         </h2>
 

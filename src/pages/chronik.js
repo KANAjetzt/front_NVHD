@@ -26,7 +26,7 @@ const chronikPage = ({ data, ...props }) => {
       <Layout currentPath={props.location.pathname}>
         <SEO title="Chronik" keywords={[`Chronik`, `Geschichte`, `Gründung`]} />
         <h2 className={styles.heading}>
-          Unsere <br />
+          unsere <br />
           <span>Geschichte</span>
         </h2>
         <div className={styles.text}>

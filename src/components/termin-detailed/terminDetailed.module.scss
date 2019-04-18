@@ -1,11 +1,12 @@
 @import '../../styles/base';
 
+$color-white: var(--color-white);
 $color-whiteRGBA: rgba(254, 254, 254, 0.8);
 $color-tertiary: var(--color-tertiary);
 
 .content {
   margin-top: -3rem;
-  min-width: 1440px;
+  margin-bottom: -5rem;
   background-color: rgba(254, 254, 254, 0.2);
   box-shadow: 0 0 153px rgba(254, 254, 254, 0.4);
 }
@@ -16,11 +17,11 @@ $color-tertiary: var(--color-tertiary);
   grid-template-columns: min-content 1fr;
   grid-row-gap: 1rem;
   align-items: center;
-  width: 100%;
   height: 30vh;
 }
 
 .title {
+  font-size: 7vw;
   margin-bottom: 0;
   padding: 1rem;
   grid-column: 1 / 2;
@@ -52,26 +53,37 @@ $color-tertiary: var(--color-tertiary);
 .img {
   grid-column: 1 / 3;
   grid-row: 1/ 6;
-  widows: 100%;
+  width: 100vw;
   height: 100%;
+}
+
+.description > div {
+  padding-left: 1rem;
 }
 
 .quickView {
   list-style: none;
-  margin: 1rem 0;
+  background-image: linear-gradient(to right, #025753, #036f6a);
 
   &Title,
   &Date,
   &Time,
   &LokationName {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     padding: 0.5rem;
     font-size: 1.8rem;
     font-family: $base-font;
-    color: $color-grey-medium;
+
     max-width: 70ch;
-    background-color: $color-whiteRGBA;
+
+    p {
+      color: $color-white;
+    }
+
+    p:not(:first-child) {
+      padding-left: 1rem;
+    }
   }
 }
 
@@ -81,7 +93,7 @@ $color-tertiary: var(--color-tertiary);
   > div {
     position: relative;
     overflow: hidden;
-    width: 100%;
+    width: 100vw;
     height: 100%;
   }
 }

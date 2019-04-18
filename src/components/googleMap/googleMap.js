@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
 import googleMapStyle from './styling.json'
 
 export class GoogleMap extends Component {

@@ -11,7 +11,7 @@ class Layout extends React.Component {
       <React.Fragment>
         <Header
           siteTitle={this.props.data.site.siteMetadata.title}
-          currentPath={this.props.currentPath}
+          currentHref={this.props.currentHref}
         />
         <div className={styles.base}>{this.props.children}</div>
         <Footer />

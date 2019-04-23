@@ -30,7 +30,7 @@ export const query = graphql`
 
 const figurenPage = ({ data, ...props }) => {
   return (
-    <Layout currentPath={props.location.pathname}>
+    <Layout currentHref={props.location.href}>
       <SEO title="Figuren" keywords={[`Figuren`, `Hardmännle`, `Heulicher`]} />
       <section>
         <h2>

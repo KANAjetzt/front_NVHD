@@ -7,7 +7,7 @@ import styles from './termine.module.scss'
 const terminePage = props => {
   return (
     <section className={styles.sectionTermine}>
-      <Layout currentPath={props.location.pathname}>
+      <Layout currentHref={props.location.href}>
         <SEO title="Termine" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
         <section className={styles.content}>
           <h2>

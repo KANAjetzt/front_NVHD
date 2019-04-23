@@ -50,8 +50,9 @@ class Header extends React.Component {
         </button>
         <Navigation
           showMenu={this.state.showMenu}
+          toggleMenu={this.toggleMenu}
+          currentHref={this.props.currentHref}
           type={'header'}
-          currentPath={this.props.currentPath}
         />
       </header>
     )

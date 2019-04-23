@@ -8,7 +8,7 @@ import Termine from '../components/termine/termine'
 
 const indexPage = props => {
   return (
-    <Layout currentPath={props.location.pathname}>
+    <Layout currentHref={props.location.href}>
       <SEO
         title="Wilkommen"
         keywords={[

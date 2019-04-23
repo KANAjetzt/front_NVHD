@@ -55,7 +55,7 @@ export const query = graphql`
 
 const vorstandPage = ({ data, ...props }) => {
   return (
-    <Layout currentPath={props.location.pathname}>
+    <Layout currentHref={props.location.href}>
       <section className={styles.pageVorstand}>
         <SEO
           title="Vorstand"

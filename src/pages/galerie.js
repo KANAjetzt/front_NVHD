@@ -28,7 +28,7 @@ export const query = graphql`
 
 const galeriePage = ({ data, ...props }) => {
   return (
-    <Layout currentPath={props.location.pathname}>
+    <Layout currentHref={props.location.href}>
       <SEO title="Galerie" keywords={[`Galerie`, `Bilder`, `Übersicht`]} />
       <h2>
         die <br />

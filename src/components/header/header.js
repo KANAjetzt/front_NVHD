@@ -5,6 +5,10 @@ import styles from './header.module.scss'
 import Navigation from '../navigation/navigation'
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props)
+    this.btnRef = React.createRef()
+  }
   state = {
     showMenu: false,
   }
@@ -39,6 +43,7 @@ class Header extends React.Component {
           type="button"
           aria-label="Menu"
           aria-controls="navigation"
+          ref={this.btnRef}
         >
           <span
             className={
@@ -48,12 +53,16 @@ class Header extends React.Component {
             }
           />
         </button>
-        <Navigation
-          showMenu={this.state.showMenu}
-          toggleMenu={this.toggleMenu}
-          currentHref={this.props.currentHref}
-          type={'header'}
-        />
+
+        {this.state.showMenu && (
+          <Navigation
+            showMenu={this.state.showMenu}
+            toggleMenu={this.toggleMenu}
+            currentHref={this.props.currentHref}
+            type={'header'}
+            exceptionRef={this.btnRef}
+          />
+        )}
       </header>
     )
   }

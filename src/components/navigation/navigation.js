@@ -1,11 +1,14 @@
 import { Link } from 'gatsby'
-import React, { useRef } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import headerStyles from './navigation-header.module.scss'
 import footerStyles from './navigation-footer.module.scss'
 import Heulicher from '../svg/heulicher'
 import useOnClickOutside from '../../lib/useClickOutside'
+import useDelayUnmount from '../../lib/useDelayUnmount'
 
 export default function navigation(props) {
+  const [mounted, setMounted] = useState(false)
+
   const checkStyle = styleClass => {
     if (props.type === 'header') {
       return headerStyles[styleClass]
@@ -21,13 +24,15 @@ export default function navigation(props) {
     return
   }
 
+  useEffect(() => setMounted(!mounted), [])
+
   const ref = useRef()
   useOnClickOutside(ref, () => props.toggleMenu(), props.exceptionRef)
 
   return (
     <nav
       className={
-        props.showMenu
+        props.showMenu && mounted
           ? checkStyle('backgroundOnClick')
           : checkStyle('background')
       }

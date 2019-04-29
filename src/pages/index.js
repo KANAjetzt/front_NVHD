@@ -62,6 +62,7 @@ const indexPage = props => {
 
         <BtnCta link="/kontakt">schreib uns</BtnCta>
       </section>
+      <div />
     </Layout>
   )
 }

@@ -5,6 +5,7 @@ import styles from './layout.module.scss'
 import Header from './header/header'
 import Footer from './footer/footer'
 import CookieBanner from 'react-cookie-banner'
+import { relative } from 'path'
 
 class Layout extends React.Component {
   render() {
@@ -22,22 +23,28 @@ class Layout extends React.Component {
               position: 'fixed',
               bottom: 0,
               background: '#025753',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '0 1rem',
             },
             button: {
-              border: '1px solid white',
-              borderRadius: 4,
-              height: 32,
-              lineHeight: '32px',
+              position: 'relativ',
+              top: 0,
+              right: 0,
+              lineHeight: 'normal',
+              marginTop: 0,
+              padding: '2px 8px',
               background: 'transparent',
+              border: '1px solid white',
+              borderRadius: '4px',
+              boxShadow: 'none',
               color: 'white',
-              fontSize: '14px',
-              fontWeight: 600,
-              opacity: 1,
-              right: 20,
-              marginTop: -16,
+              cursor: 'pointer',
             },
             message: {
               fontSize: '1.2rem',
+              lineHeight: 'normal',
             },
             link: {
               fontWeight: 'bold',

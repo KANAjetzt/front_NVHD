@@ -25,6 +25,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.8.6",
     "react-cookie-banner": "^4.0.0",
+    "react-delayed": "^0.2.3",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "react-images": "^0.5.19",

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './header.module.scss'
 import Navigation from '../navigation/navigation'
+import Delay from 'react-delayed'
 
 class Header extends React.Component {
   constructor(props) {
@@ -11,12 +12,19 @@ class Header extends React.Component {
   }
   state = {
     showMenu: false,
+    closeAnimation: false,
   }
 
   toggleMenu = () => {
     this.setState({
-      showMenu: !this.state.showMenu,
+      closeAnimation: !this.state.closeAnimation,
     })
+
+    setTimeout(() => {
+      this.setState({
+        showMenu: !this.state.showMenu,
+      })
+    }, 200)
   }
 
   render() {
@@ -57,6 +65,7 @@ class Header extends React.Component {
         {this.state.showMenu && (
           <Navigation
             showMenu={this.state.showMenu}
+            closeAnimation={this.state.closeAnimation}
             toggleMenu={this.toggleMenu}
             currentHref={this.props.currentHref}
             type={'header'}

@@ -4,7 +4,6 @@ import headerStyles from './navigation-header.module.scss'
 import footerStyles from './navigation-footer.module.scss'
 import Heulicher from '../svg/heulicher'
 import useOnClickOutside from '../../lib/useClickOutside'
-import useDelayUnmount from '../../lib/useDelayUnmount'
 
 export default function navigation(props) {
   const [mounted, setMounted] = useState(false)
@@ -24,7 +23,9 @@ export default function navigation(props) {
     return
   }
 
-  useEffect(() => setMounted(!mounted), [])
+  useEffect(() => {
+    setMounted(!mounted)
+  }, [])
 
   const ref = useRef()
   useOnClickOutside(ref, () => props.toggleMenu(), props.exceptionRef)
@@ -32,7 +33,7 @@ export default function navigation(props) {
   return (
     <nav
       className={
-        props.showMenu && mounted
+        props.showMenu && props.closeAnimation && mounted
           ? checkStyle('backgroundOnClick')
           : checkStyle('background')
       }

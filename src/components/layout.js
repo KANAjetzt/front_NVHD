@@ -5,7 +5,6 @@ import styles from './layout.module.scss'
 import Header from './header/header'
 import Footer from './footer/footer'
 import CookieBanner from 'react-cookie-banner'
-import { relative } from 'path'
 
 class Layout extends React.Component {
   render() {
@@ -34,7 +33,7 @@ class Layout extends React.Component {
               right: 0,
               lineHeight: 'normal',
               marginTop: 0,
-              padding: '2px 8px',
+              padding: '6px 14px',
               background: 'transparent',
               border: '1px solid white',
               borderRadius: '4px',

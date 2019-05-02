@@ -33,6 +33,9 @@ export default function navigation(props) {
   return (
     <nav
       className={
+        // props.closeAnimation --> wird true nach 200ms wenn auf NAV Btn geklickt wird
+        // mounted --> wird true nachdem die NAV gemountet ist
+        // Der ganze spaß um die NAV Bar ein und aus zu animieren
         props.showMenu && props.closeAnimation && mounted
           ? checkStyle('backgroundOnClick')
           : checkStyle('background')

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styles from './header.module.scss'
 import Navigation from '../navigation/navigation'
-import Delay from 'react-delayed'
 
 class Header extends React.Component {
   constructor(props) {
@@ -19,12 +18,18 @@ class Header extends React.Component {
     this.setState({
       closeAnimation: !this.state.closeAnimation,
     })
-
-    setTimeout(() => {
+    // wenn die NAV nicht angezeigt wird kein delay von 200ms anonsten schon um die animation ab zu spielen
+    if (!this.state.showMenu) {
       this.setState({
         showMenu: !this.state.showMenu,
       })
-    }, 200)
+    } else {
+      setTimeout(() => {
+        this.setState({
+          showMenu: !this.state.showMenu,
+        })
+      }, 200)
+    }
   }
 
   render() {

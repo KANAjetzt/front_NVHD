@@ -60,7 +60,7 @@ class Header extends React.Component {
         >
           <span
             className={
-              this.state.showMenu
+              this.state.closeAnimation
                 ? styles.burgerNavIconOpen
                 : styles.burgerNavIconClosed
             }

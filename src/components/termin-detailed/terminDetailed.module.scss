@@ -9,45 +9,48 @@ $color-tertiary: var(--color-tertiary);
   margin-bottom: -5rem;
   background-color: rgba(254, 254, 254, 0.2);
   box-shadow: 0 0 153px rgba(254, 254, 254, 0.4);
+
+  p,
+  h2,
+  h3,
+  h4 {
+    color: $color-white;
+  }
 }
 
 .hero {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 2fr;
+  grid-template-rows: 1fr 1fr 3fr;
   grid-template-columns: min-content 1fr;
-  grid-row-gap: 1rem;
   align-items: center;
-  height: 30vh;
-}
+  height: 16vh;
 
-.title {
-  font-size: 7vw;
-  margin-bottom: 0;
-  padding: 1rem;
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
-  z-index: 2;
-  background-color: $color-whiteRGBA;
-}
-
-.datum {
-  padding: 1rem;
-  grid-column: 1 / 2;
-  grid-row: 3 / 4;
-  z-index: 2;
-  background-color: $color-whiteRGBA;
-
-  p {
-    color: $color-tertiary;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  p,
+  h2 {
+    color: $color-white;
   }
 }
 
-.uhrzeit {
+.title {
+  font-size: 1.8rem;
+  font-weight: 400;
+  white-space: nowrap;
+  margin-bottom: 0;
+  padding: 0 2rem;
   grid-column: 1 / 2;
-  grid-row: 4 / 5;
+  grid-row: 2 / 3;
   z-index: 2;
-  background-color: $color-whiteRGBA;
+}
+
+.datum {
+  padding: 2rem 2rem 0 2rem;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  z-index: 2;
+
+  p {
+    font-size: 2.4rem;
+  }
 }
 
 .img {
@@ -55,13 +58,37 @@ $color-tertiary: var(--color-tertiary);
   grid-row: 1/ 6;
   width: 100vw;
   height: 100%;
+
+  :after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+      95deg,
+      rgba(2, 87, 83, 0.9) 0%,
+      rgba(2, 87, 83, 0.8) 70%,
+      rgba(3, 111, 106, 0.3)
+    );
+  }
 }
 
-.description > div {
-  padding-left: 1rem;
+.description {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(2, 87, 83, 0.66),
+    rgba(3, 111, 106, 0.59)
+  );
+
+  > div {
+    padding: 1.5rem 1rem 0 1rem;
+  }
 }
 
 .quickView {
+  padding: 1.5rem 1rem;
   list-style: none;
   background-image: linear-gradient(to right, #025753, #036f6a);
 
@@ -72,17 +99,24 @@ $color-tertiary: var(--color-tertiary);
     display: flex;
     align-items: center;
     padding: 0.5rem;
-    font-size: 1.8rem;
-    font-family: $base-font;
-
     max-width: 70ch;
 
     p {
       color: $color-white;
+      font-family: $base-font;
+      font-size: 1.4rem;
     }
 
     p:not(:first-child) {
       padding-left: 1rem;
+    }
+  }
+
+  &Title {
+    padding-bottom: 1.5rem;
+
+    p {
+      font-size: 1.8rem;
     }
   }
 }

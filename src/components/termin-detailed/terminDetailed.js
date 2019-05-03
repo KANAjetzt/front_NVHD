@@ -24,13 +24,7 @@ export default class Termin extends Component {
         <section className={styles.hero}>
           <h2 className={styles.title}>{title}</h2>
           <div className={styles.datum}>
-            <p>
-              {getWeekDay(date)}, {getDate(date)}
-            </p>
-          </div>
-          <div className={styles.uhrzeit}>
-            {' '}
-            <p> {getTime(date)} </p>{' '}
+            <p>{getDate(date)}</p>
           </div>
           <Img className={styles.img} fluid={image.asset.fluid} />
         </section>

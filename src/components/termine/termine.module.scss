@@ -1,0 +1,8 @@
+@import '../../styles/base';
+
+.termine {
+  margin-left: 0;
+  @media only screen and (min-width: $bp-smallest) {
+    margin-left: 2rem;
+  }
+}

@@ -45,6 +45,7 @@ class Termine extends React.Component {
                 terminKey={termin.node.id}
                 date={termin.node.date}
                 title={termin.node.title}
+                slug={termin.node.slug.current}
               />
             ))}
           </div>
@@ -66,6 +67,9 @@ export default props => (
               id
               date
               title
+              slug {
+                current
+              }
             }
           }
         }

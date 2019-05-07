@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Img from 'gatsby-image'
+import { Link } from 'gatsby'
 import styles from './terminDetailed.module.scss'
 import GoogleMap from '../googleMap/googleMap'
 import BlockContent from '../block-content/index'
@@ -7,6 +8,7 @@ import { getDate, getTime, getWeekDay } from '../../lib/datumUhrzeit'
 import CalenderSVG from '../svg/calendar'
 import ClockSVG from '../svg/clock'
 import LocationSVG from '../svg/location'
+import WideArrowSVG from '../svg/wideArrow'
 
 export default class Termin extends Component {
   render() {
@@ -21,13 +23,16 @@ export default class Termin extends Component {
 
     return (
       <section className={styles.content}>
-        <section className={styles.hero}>
-          <h2 className={styles.title}>{title}</h2>
-          <div className={styles.datum}>
-            <p>{getDate(date)}</p>
-          </div>
-          <Img className={styles.img} fluid={image.asset.fluid} />
-        </section>
+        <Link to="/termine">
+          <section className={styles.hero}>
+            <WideArrowSVG fill="#eee" classname={styles.backArrow} />
+            <h2 className={styles.title}>{title}</h2>
+            <div className={styles.datum}>
+              <p>{getDate(date)}</p>
+            </div>
+            <Img className={styles.img} fluid={image.asset.fluid} />
+          </section>
+        </Link>
         <section className={styles.description}>
           <BlockContent blocks={_rawDescription} />
         </section>

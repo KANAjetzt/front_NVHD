@@ -23,7 +23,6 @@ $color-cta-lighten: var(--color-cta-lighten);
   font-family: $base-font;
   text-align: left;
   border-radius: 2px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 
   transition: background 250ms ease-in-out, transform 150ms ease;
 
@@ -69,4 +68,5 @@ $color-cta-lighten: var(--color-cta-lighten);
   display: grid;
   grid-template-columns: 9fr 1fr;
   grid-template-rows: 1fr 1fr;
+  grid-column-gap: 2rem;
 }

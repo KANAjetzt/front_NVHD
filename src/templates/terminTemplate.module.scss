@@ -11,5 +11,7 @@ $color-secondary: var(--color-secondary);
 
   > div {
     padding: 0;
+    margin: 0;
+    max-width: unset;
   }
 }

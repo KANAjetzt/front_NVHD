@@ -5,8 +5,15 @@ import styles from './index.module.scss'
 import BtnCta from '../components/Btn-Cta/btnCta'
 import ImageCompVereinsfiguren from '../components/image-comp-Vereinsfiguren/imageCompVereinsfiguren'
 import Termine from '../components/termine/termine'
+import { useSpring, animated } from 'react-spring'
 
 const indexPage = props => {
+  const peter = useSpring({
+    config: { duration: 200 },
+    opacity: 1,
+    from: { opacity: 0 },
+  })
+
   return (
     <Layout currentHref={props.location.href}>
       <SEO
@@ -28,7 +35,7 @@ const indexPage = props => {
           <span className={styles.h2Span}>LIECHER !</span>
         </h2>
       </section>
-      <section className={styles.unserVerein}>
+      <animated.section className={styles.unserVerein} style={peter}>
         <h3>
           unser <br />
           <span>Verein</span>
@@ -37,7 +44,7 @@ const indexPage = props => {
         <ImageCompVereinsfiguren />
 
         <BtnCta link="/figuren">Mehr erfahren</BtnCta>
-      </section>
+      </animated.section>
 
       <section className={styles.terminSection}>
         <h3>

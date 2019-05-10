@@ -1,6 +1,7 @@
 import { Link, StaticQuery, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
+import Img from 'gatsby-image'
 import styles from './header.module.scss'
 import Navigation from '../navigation/navigation'
 
@@ -38,12 +39,9 @@ class Header extends React.Component {
         <div className={styles.logoBox}>
           <h1 style={{ margin: 0 }}>
             <Link to="/">
-              <img
-                key={`${this.props.data.logo.edges[0].node.id}-image`}
+              <Img
                 className={styles.logo}
-                src={`https://cdn.sanity.io/${
-                  this.props.data.logo.edges[0].node.logo.asset.path
-                }`}
+                fluid={this.props.data.logo.edges[0].node.logo.asset.fluid}
                 alt={this.props.siteTitle}
               />
             </Link>
@@ -94,6 +92,9 @@ export default props => (
               logo {
                 asset {
                   path
+                  fluid(maxWidth: 50) {
+                    ...GatsbySanityImageFluid
+                  }
                 }
               }
             }

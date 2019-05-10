@@ -3,17 +3,11 @@ import styles from './termin.module.scss'
 import { Link } from 'gatsby'
 import { getDate, getTime } from '../../lib/datumUhrzeit'
 import IconWideArrow from '../svg/wideArrow'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 const Termin = props => {
   return (
     <div className={styles.termin}>
-      <AniLink
-        swipe
-        direction="left"
-        to={`/termine/${props.slug}`}
-        duration={0.2}
-      >
+      <Link to={`/termine/${props.slug}`}>
         <button className={styles.btn}>
           <div className={styles.btnContent}>
             <p className={styles.date}>
@@ -25,7 +19,7 @@ const Termin = props => {
             </div>
           </div>
         </button>
-      </AniLink>
+      </Link>
     </div>
   )
 }

@@ -3,13 +3,20 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Termine from '../components/termine/termine'
 import styles from './termine.module.scss'
+import { useSpring, animated } from 'react-spring'
 
 const terminePage = props => {
+  const spring = useSpring({
+    config: {},
+    transform: 'translateX(0)',
+    from: { transform: 'translateX(100%)' },
+  })
+  console.log(spring)
   return (
     <section className={styles.sectionTermine}>
       <Layout currentHref={props.location.href}>
         <SEO title="Termine" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
-        <section className={styles.content}>
+        <animated.section className={styles.content} style={spring}>
           <h2>
             Termine <br />
             <span className={styles.h2Span}>2019</span>
@@ -17,7 +24,7 @@ const terminePage = props => {
           <div className={styles.termine}>
             <Termine />
           </div>
-        </section>
+        </animated.section>
       </Layout>
     </section>
   )

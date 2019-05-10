@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 import styles from './terminDetailed.module.scss'
@@ -9,58 +9,63 @@ import CalenderSVG from '../svg/calendar'
 import ClockSVG from '../svg/clock'
 import LocationSVG from '../svg/location'
 import WideArrowSVG from '../svg/wideArrow'
-import TransitionLink from 'gatsby-plugin-transition-link'
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import { useSpring, animated } from 'react-spring'
 
-export default class Termin extends Component {
-  render() {
-    const {
-      date,
-      image,
-      location,
-      locationName,
-      title,
-      _rawDescription,
-    } = this.props.stuff.allSanityTermin.edges[0].node
+const TerminDetailed = props => {
+  const {
+    date,
+    image,
+    location,
+    locationName,
+    title,
+    _rawDescription,
+  } = props.stuff.allSanityTermin.edges[0].node
 
-    return (
-      <section className={styles.content}>
-        <AniLink swipe to="/termine" duration={0.2}>
-          <section className={styles.hero}>
-            <WideArrowSVG fill="#eee" classname={styles.backArrow} />
-            <h2 className={styles.title}>{title}</h2>
-            <div className={styles.datum}>
-              <p>{getDate(date)}</p>
-            </div>
-            <Img className={styles.img} fluid={image.asset.fluid} />
-          </section>
-        </AniLink>
-        <section className={styles.description}>
-          <BlockContent blocks={_rawDescription} />
+  const spring = useSpring({
+    config: {},
+    transform: 'translateX(0)',
+    from: { transform: 'translateX(-100%)' },
+  })
+
+  return (
+    <animated.section className={styles.content} style={spring}>
+      <Link to="/termine">
+        <section className={styles.hero}>
+          <WideArrowSVG fill="#eee" classname={styles.backArrow} />
+          <h2 className={styles.title}>{title}</h2>
+          <div className={styles.datum}>
+            <p>{getDate(date)}</p>
+          </div>
+          <Img className={styles.img} fluid={image.asset.fluid} />
         </section>
-        <section>
-          <ul className={styles.quickView}>
-            <li className={styles.quickViewTitle}>
-              <p>{title}</p>
-            </li>
-            <li className={styles.quickViewDate}>
-              <CalenderSVG fill="#fefefe" />
-              <p>
-                {getWeekDay(date)}, {getDate(date)}{' '}
-              </p>
-            </li>
-            <li className={styles.quickViewTime}>
-              <ClockSVG fill="#fefefe" /> <p>{getTime(date)}</p>
-            </li>
-            <li className={styles.quickViewLokationName}>
-              <LocationSVG fill="#fefefe" /> <p>{locationName}</p>
-            </li>
-          </ul>
-        </section>
-        <section className={styles.googleMap}>
-          <GoogleMap initialCenter={location} markerTitle={locationName} />
-        </section>
+      </Link>
+      <section className={styles.description}>
+        <BlockContent blocks={_rawDescription} />
       </section>
-    )
-  }
+      <section>
+        <ul className={styles.quickView}>
+          <li className={styles.quickViewTitle}>
+            <p>{title}</p>
+          </li>
+          <li className={styles.quickViewDate}>
+            <CalenderSVG fill="#fefefe" />
+            <p>
+              {getWeekDay(date)}, {getDate(date)}{' '}
+            </p>
+          </li>
+          <li className={styles.quickViewTime}>
+            <ClockSVG fill="#fefefe" /> <p>{getTime(date)}</p>
+          </li>
+          <li className={styles.quickViewLokationName}>
+            <LocationSVG fill="#fefefe" /> <p>{locationName}</p>
+          </li>
+        </ul>
+      </section>
+      <section className={styles.googleMap}>
+        <GoogleMap initialCenter={location} markerTitle={locationName} />
+      </section>
+    </animated.section>
+  )
 }
+
+export default TerminDetailed

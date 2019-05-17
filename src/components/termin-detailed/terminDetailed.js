@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 import styles from './terminDetailed.module.scss'
@@ -10,8 +10,10 @@ import ClockSVG from '../svg/clock'
 import LocationSVG from '../svg/location'
 import WideArrowSVG from '../svg/wideArrow'
 import { useSpring, animated } from 'react-spring'
+import { useOnScreen } from '../../lib/useOnScreen'
 
 const TerminDetailed = props => {
+  console.log(props)
   const {
     date,
     image,
@@ -27,27 +29,37 @@ const TerminDetailed = props => {
     from: { transform: 'translateX(-100%)' },
   })
 
+  const ref = useRef()
+
+  const onScreen = useOnScreen(ref)
+
+  console.log(onScreen)
+
   return (
     <animated.section className={styles.content} style={spring}>
-      <Link to="/termine">
-        <section className={styles.hero}>
-          <WideArrowSVG fill="#eee" classname={styles.backArrow} />
-          <h2 className={styles.title}>{title}</h2>
-          <div className={styles.datum}>
-            <p>{getDate(date)}</p>
-          </div>
-          <Img className={styles.img} fluid={image.asset.fluid} />
-        </section>
-      </Link>
       <section className={styles.description}>
         <BlockContent blocks={_rawDescription} />
       </section>
-      <section>
-        <ul className={styles.quickView}>
-          <li className={styles.quickViewTitle}>
-            <p>{title}</p>
-          </li>
-          <li className={styles.quickViewDate}>
+      <Link to="/termine">
+        <section className={onScreen ? styles.heroInPlace : styles.hero}>
+          <WideArrowSVG fill="#eee" classname={styles.backArrow} />
+          <h2 className={onScreen ? styles.titleInPlace : styles.title}>
+            {title}
+          </h2>
+          <div className={onScreen ? styles.datumInPlace : styles.datum}>
+            <p>{getDate(date)}</p>
+          </div>
+
+          {image && <Img className={styles.img} fluid={image.asset.fluid} />}
+        </section>
+      </Link>
+      <section className={styles.quickView} ref={ref}>
+        <ul>
+          <li
+            className={
+              onScreen ? styles.quickViewDateInPlace : styles.quickViewDate
+            }
+          >
             <CalenderSVG fill="#fefefe" />
             <p>
               {getWeekDay(date)}, {getDate(date)}{' '}

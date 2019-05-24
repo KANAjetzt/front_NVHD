@@ -24,7 +24,7 @@ class Termine extends React.Component {
 
   filterDates(props) {
     // filter out the dates that are older then today
-    return props.data.termine.edges.filter(termin => {
+    return props.data.filter(termin => {
       const currentDate = new Date()
       const terminDate = new Date(`${termin.node.date}`)
       if (terminDate > currentDate) {
@@ -37,6 +37,12 @@ class Termine extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <h2>
+          Termine <br />
+          <span className={styles.h2Span}>
+            {new Date(this.props.data[0].node.date).getFullYear()}
+          </span>
+        </h2>
         {this.state.termine[0] ? (
           <div className={styles.termine}>
             {this.state.termine.map(termin => (
@@ -44,6 +50,7 @@ class Termine extends React.Component {
                 key={termin.node.id}
                 terminKey={termin.node.id}
                 date={termin.node.date}
+                dateText={termin.node.dateText}
                 title={termin.node.title}
                 slug={termin.node.slug.current}
               />
@@ -66,6 +73,7 @@ export default props => (
             node {
               id
               date
+              dateText
               title
               slug {
                 current

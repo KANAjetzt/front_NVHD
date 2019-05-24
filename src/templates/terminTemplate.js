@@ -21,6 +21,7 @@ export const query = graphql`
         node {
           id
           date
+          dateText
           title
           _rawDescription
           locationName

@@ -92,7 +92,7 @@ export default props => (
               logo {
                 asset {
                   path
-                  fluid(maxWidth: 50) {
+                  fluid(maxWidth: 200) {
                     ...GatsbySanityImageFluid
                   }
                 }

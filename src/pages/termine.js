@@ -7,11 +7,9 @@ import { useSpring, animated } from 'react-spring'
 
 const terminePage = props => {
   const spring = useSpring({
-    config: {},
     transform: 'translateX(0)',
     from: { transform: 'translateX(100%)' },
   })
-  console.log(spring)
   return (
     <section className={styles.sectionTermine}>
       <Layout currentHref={props.location.href}>

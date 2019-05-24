@@ -14,7 +14,8 @@ $color-cta-lighten: var(--color-cta-lighten);
 
 .btn {
   display: inline-block;
-  max-width: 35rem;
+  width: 100%;
+  // max-width: 35rem;
   border: none;
   padding: 2rem 1rem;
   background: rgba(2, 87, 83, 0.6);
@@ -42,7 +43,7 @@ $color-cta-lighten: var(--color-cta-lighten);
 }
 
 .date {
-  font-size: 2.4rem;
+  font-size: 2rem;
   color: $color-white;
   grid-column: 1 / 2;
   grid-row: 1 / 2;

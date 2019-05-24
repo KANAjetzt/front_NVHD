@@ -5,6 +5,7 @@ $color-whiteRGBA: rgba(254, 254, 254, 0.8);
 $color-tertiary: var(--color-tertiary);
 
 .content {
+  display: block;
   margin-top: -3rem;
   background-color: rgba(254, 254, 254, 0.2);
   box-shadow: 0 0 153px rgba(254, 254, 254, 0.4);
@@ -19,6 +20,7 @@ $color-tertiary: var(--color-tertiary);
 
 .hero {
   position: sticky;
+  z-index: 2000;
   top: 6rem;
   display: grid;
   grid-template-rows: 1fr min-content min-content 1fr;

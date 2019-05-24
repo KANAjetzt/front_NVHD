@@ -3,7 +3,6 @@ import styles from './datum.module.scss'
 import { getDate, getTime, getWeekDay } from '../../lib/datumUhrzeit'
 
 const checkDateType = (dateType, date) => {
-  console.log(dateType)
   switch (dateType) {
     case 'date':
       return getDate(date)

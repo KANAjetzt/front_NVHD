@@ -13,9 +13,9 @@ import { useSpring, animated } from 'react-spring'
 import { useOnScreen } from '../../lib/useOnScreen'
 
 const TerminDetailed = props => {
-  console.log(props)
   const {
     date,
+    dateText,
     image,
     location,
     locationName,
@@ -32,8 +32,6 @@ const TerminDetailed = props => {
   const ref = useRef()
 
   const onScreen = useOnScreen(ref)
-
-  console.log(onScreen)
 
   return (
     <animated.section className={styles.content} style={spring}>
@@ -62,12 +60,15 @@ const TerminDetailed = props => {
           >
             <CalenderSVG fill="#fefefe" />
             <p>
-              {getWeekDay(date)}, {getDate(date)}{' '}
+              {dateText ? dateText : `${getWeekDay(date)}, ${getDate(date)}`}
             </p>
           </li>
-          <li className={styles.quickViewTime}>
-            <ClockSVG fill="#fefefe" /> <p>{getTime(date)}</p>
-          </li>
+          {date.length > 10 && (
+            <li className={styles.quickViewTime}>
+              <ClockSVG fill="#fefefe" /> <p>{getTime(date)}</p>
+            </li>
+          )}
+
           <li className={styles.quickViewLokationName}>
             <LocationSVG fill="#fefefe" /> <p>{locationName}</p>
           </li>

@@ -47,11 +47,6 @@ const indexPage = props => {
       </animated.section>
 
       <section className={styles.terminSection}>
-        <h3>
-          Termine <br />
-          <span>2019</span>
-        </h3>
-
         <Termine />
 
         <BtnCta link="/termine">alle Termine</BtnCta>

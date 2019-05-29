@@ -1,67 +1,72 @@
-import { StaticQuery, graphql } from 'gatsby'
-import React from 'react'
-import styles from './termine.module.scss'
-import Termin from '../termin/termin'
+import React, { useState } from 'react'
+import { graphql, StaticQuery } from 'gatsby'
+import TermineYear from '../termine-year/termineYear'
 
-class Termine extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      termine: this.prepareDates(props),
-    }
-    this.prepareDates = this.prepareDates.bind(this)
-  }
+const groupDates = termine => {
+  let currentYear
+  let groupedTermine = []
+  let lastFilterdOutYear
 
-  prepareDates(props) {
-    return this.sortDates(this.filterDates(props))
-  }
-
-  sortDates(termine) {
-    return termine.sort((a, b) => {
-      return new Date(a.node.date) - new Date(b.node.date)
-    })
-  }
-
-  filterDates(props) {
-    // filter out the dates that are older then today
-    return props.data.filter(termin => {
-      const currentDate = new Date()
-      const terminDate = new Date(`${termin.node.date}`)
-      if (terminDate > currentDate) {
-        return termin
+  const filterTermine = () => {
+    console.log(currentYear)
+    console.log(termine)
+    const filter = termine.edges.filter((termin, index, array) => {
+      // Wenn das aktuelle Datums Jahr gleich ist wie das current Year adde es zum Array
+      if (
+        new Date(termin.node.date).getFullYear() === currentYear &&
+        index !== array.length - 1
+      ) {
+        return true
+        // Wenn das aktuelle Datums Jahr gleich und wir beim letzten Eintrag sind,
+        // adde es zum Array und setzte currentYear
+      } else if (
+        new Date(termin.node.date).getFullYear() === currentYear &&
+        index === array.length - 1
+      ) {
+        currentYear = lastFilterdOutYear
+        return true
+        // Ansonsten schau ob wir am ende sind und trage dann das volle Jahr als currentYear ein
+      } else if (index === array.length - 1) {
+        currentYear = new Date(termin.node.date).getFullYear()
+        return false
       }
-      return undefined
+
+      lastFilterdOutYear = new Date(termin.node.date).getFullYear()
+      return false
     })
+
+    console.log(filter)
+    if (filter.length !== 0) {
+      groupedTermine = [...groupedTermine, filter]
+    }
+
+    return filter
   }
 
-  render() {
-    return (
-      <React.Fragment>
-        <h2>
-          Termine <br />
-          <span className={styles.h2Span}>
-            {new Date(this.props.data[0].node.date).getFullYear()}
-          </span>
-        </h2>
-        {this.state.termine[0] ? (
-          <div className={styles.termine}>
-            {this.state.termine.map(termin => (
-              <Termin
-                key={termin.node.id}
-                terminKey={termin.node.id}
-                date={termin.node.date}
-                dateText={termin.node.dateText}
-                title={termin.node.title}
-                slug={termin.node.slug.current}
-              />
-            ))}
-          </div>
-        ) : (
-          <p />
-        )}
-      </React.Fragment>
-    )
+  console.log(filterTermine())
+
+  if (filterTermine() === []) {
+    filterTermine()
+  } else {
+    groupedTermine = [...groupedTermine, filterTermine()]
   }
+
+  console.log(groupedTermine)
+  return groupedTermine
+}
+
+const Termine = (data, props) => {
+  console.log(data)
+  const [termine] = useState(groupDates(data.data.termine))
+  console.log(termine)
+
+  return (
+    <React.Fragment>
+      {termine.map(year => (
+        <TermineYear data={year} />
+      ))}
+    </React.Fragment>
+  )
 }
 
 export default props => (

@@ -38,19 +38,21 @@ const TerminDetailed = props => {
       <section className={styles.description}>
         <BlockContent blocks={_rawDescription} />
       </section>
-      <Link to="/termine">
-        <section className={onScreen ? styles.heroInPlace : styles.hero}>
-          <WideArrowSVG fill="#eee" classname={styles.backArrow} />
-          <h2 className={onScreen ? styles.titleInPlace : styles.title}>
-            {title}
-          </h2>
-          <div className={onScreen ? styles.datumInPlace : styles.datum}>
-            <p>{getDate(date)}</p>
-          </div>
+      <div className={onScreen ? styles.stickyHeroInPlace : styles.stickyHero}>
+        <Link to="/termine">
+          <section className={styles.hero}>
+            <WideArrowSVG fill="#eee" classname={styles.backArrow} />
+            <h2 className={onScreen ? styles.titleInPlace : styles.title}>
+              {title}
+            </h2>
+            <div className={onScreen ? styles.datumInPlace : styles.datum}>
+              <p>{getDate(date)}</p>
+            </div>
 
-          {image && <Img className={styles.img} fluid={image.asset.fluid} />}
-        </section>
-      </Link>
+            {image && <Img className={styles.img} fluid={image.asset.fluid} />}
+          </section>
+        </Link>
+      </div>
       <section className={styles.quickView} ref={ref}>
         <ul>
           <li

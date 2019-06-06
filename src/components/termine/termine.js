@@ -3,21 +3,25 @@ import { graphql, StaticQuery } from 'gatsby'
 import TermineYear from '../termine-year/termineYear'
 
 const groupDates = termine => {
-  // erstelle eine neue Map
+  // erstelle ein neues Map
   const newTermine = new Map()
-  // Grab dir den 1. Termin aus den Terminen und speicher das Jahr davon in currentYear
+
   let currentYear = undefined
 
   termine.edges.forEach(termin => {
     const { date } = termin.node
-    // Wenn das FullYear des aktuellen termins = ist mit dem currentYear adde es zu dem key mit dem currentYear value (z.B: 2019)
+
+    // Wenn das FullYear des aktuellen termins gleich ist mit dem currentYear:
     if (new Date(date).getFullYear() === currentYear) {
+      //adde es zu dem key mit dem currentYear value (z.B: 2019)
       newTermine.set(currentYear, [...newTermine.get(currentYear), termin])
-    } else {
-      /* Wenn das FullYear des aktuellen termins nicht gleich ist mit dem currentYear,
-      update das currentYear mit dem fullYear des aktuellen Termins und adde den termin zu dem key currentYear (z.B. 2020) */
+    }
+    // Wenn das FullYear des aktuellen termins nicht gleich ist wie das currentYear:
+    else {
+      // Update das currentYear mit dem fullYear des aktuellen Termins
       currentYear = new Date(date).getFullYear()
 
+      // Adde den termin zu dem key currentYear (z.B. 2020)
       if (newTermine.has(currentYear)) {
         newTermine.set(currentYear, [...newTermine.get(currentYear), termin])
       }

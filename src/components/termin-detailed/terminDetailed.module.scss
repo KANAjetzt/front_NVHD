@@ -7,7 +7,7 @@ $color-tertiary: var(--color-tertiary);
 .content {
   margin-top: -3rem;
   background-color: rgba(254, 254, 254, 0.2);
-  min-height: calc(100vh - 30rem);
+  min-height: calc(100vh - 25rem);
   display: grid;
   grid-template-rows: min-content min-content min-content minmax(40rem, 1fr);
 

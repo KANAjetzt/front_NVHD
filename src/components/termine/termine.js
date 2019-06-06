@@ -3,77 +3,37 @@ import { graphql, StaticQuery } from 'gatsby'
 import TermineYear from '../termine-year/termineYear'
 
 const groupDates = termine => {
-  let currentYear = new Date(termine.edges[0].node.date).getFullYear()
-  let groupedTermine = []
-  let filterdYears = []
-  let lastFilterdOutYear
-  //! filterdYears beinhaltet alle durchlaufen Jahre -> alle die currentYear waren.
-  //! Ist das Jahr nicht in filterdYears -> wird es zu currentYear
-  //! Ist es in filterdYears wird currentYear undefined (?)
-  //! Ist currentYear undefined ist die loop beendet und alle Jahre sind Grupiert (?)
+  // erstelle eine neue Map
+  const newTermine = new Map()
+  // Grab dir den 1. Termin aus den Terminen und speicher das Jahr davon in currentYear
+  let currentYear = undefined
 
-  const filterTermine = () => {
-    console.log(`currentYear --> ${currentYear}`)
-    console.log(`lastFilterdOutYear --> ${lastFilterdOutYear}`)
-    console.log(filterdYears)
-    console.log(termine)
-
-    const filter = termine.edges.filter((termin, index, array) => {
-      // Wenn das aktuelle Datums Jahr gleich ist wie das currentYear und wir nicht am ende des Arrays sind:
-      if (
-        new Date(termin.node.date).getFullYear() === currentYear &&
-        index !== array.length - 1
-      ) {
-        // - adde es zum filter Array
-        return true
-      }
-
-      // Wenn das aktuelle Datums Jahr gleich ist und wir beim letzten Eintrag sind:
-      else if (
-        new Date(termin.node.date).getFullYear() === currentYear &&
-        index === array.length - 1
-      ) {
-        // - adde currentYear zum filterdYears Array
-        filterdYears = [...filterdYears, currentYear]
-        // - setzte lastFilterdOutYear zum CurrentYear, wenn lastFilterdOutYear nicht in filterdYears Array ist
-        filterdYears.find(lastFilterdOutYear)
-          ? (currentYear = undefined)
-          : (currentYear = lastFilterdOutYear)
-        // - adde es zum filter Array
-        return true
-      }
-
-      // Ansonsten schau ob wir am ende sind und trage dann das volle Jahr des Elemts als currentYear ein, wenn dieses Jahr nicht in filterdYears Array ist
-      else if (index === array.length - 1) {
-        filterdYears.find(`${new Date(termin.node.date).getFullYear()}`)
-          ? (currentYear = undefined)
-          : (currentYear = new Date(termin.node.date).getFullYear())
-        return false
-      }
-
-      lastFilterdOutYear = new Date(termin.node.date).getFullYear()
-      return false
-    })
-
-    if (filter.length !== 0) {
-      groupedTermine = [...groupedTermine, filter]
+  termine.edges.forEach(termin => {
+    const { date } = termin.node
+    // Wenn das FullYear des aktuellen termins = ist mit dem currentYear adde es zu dem key mit dem currentYear value (z.B: 2019)
+    if (new Date(date).getFullYear() === currentYear) {
+      newTermine.set(currentYear, [...newTermine.get(currentYear), termin])
     } else {
-      filterTermine()
-    }
-    return filter
-  }
+      /* Wenn das FullYear des aktuellen termins nicht gleich ist mit dem currentYear,
+      update das currentYear mit dem fullYear des aktuellen Termins und adde den termin zu dem key currentYear (z.B. 2020) */
+      currentYear = new Date(date).getFullYear()
 
-  filterTermine()
-  return groupedTermine
+      if (newTermine.has(currentYear)) {
+        newTermine.set(currentYear, [...newTermine.get(currentYear), termin])
+      }
+      newTermine.set(currentYear, [termin])
+    }
+  })
+  // mit .values() erhält man ein neues "Iterator Objekt" das man mit Array.from zu einem Array wandeln kann
+  return Array.from(newTermine.values())
 }
 
 const Termine = (data, props) => {
   const [termine] = useState(groupDates(data.data.termine))
-
   return (
     <React.Fragment>
       {termine.map(year => (
-        <TermineYear data={year} />
+        <TermineYear data={year} key={year[0].node.id} />
       ))}
     </React.Fragment>
   )

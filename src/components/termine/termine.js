@@ -3,31 +3,51 @@ import { graphql, StaticQuery } from 'gatsby'
 import TermineYear from '../termine-year/termineYear'
 
 const groupDates = termine => {
-  let currentYear
+  let currentYear = new Date(termine.edges[0].node.date).getFullYear()
   let groupedTermine = []
+  let filterdYears = []
   let lastFilterdOutYear
+  //! filterdYears beinhaltet alle durchlaufen Jahre -> alle die currentYear waren.
+  //! Ist das Jahr nicht in filterdYears -> wird es zu currentYear
+  //! Ist es in filterdYears wird currentYear undefined (?)
+  //! Ist currentYear undefined ist die loop beendet und alle Jahre sind Grupiert (?)
 
   const filterTermine = () => {
-    console.log(currentYear)
+    console.log(`currentYear --> ${currentYear}`)
+    console.log(`lastFilterdOutYear --> ${lastFilterdOutYear}`)
+    console.log(filterdYears)
     console.log(termine)
+
     const filter = termine.edges.filter((termin, index, array) => {
-      // Wenn das aktuelle Datums Jahr gleich ist wie das current Year adde es zum Array
+      // Wenn das aktuelle Datums Jahr gleich ist wie das currentYear und wir nicht am ende des Arrays sind:
       if (
         new Date(termin.node.date).getFullYear() === currentYear &&
         index !== array.length - 1
       ) {
+        // - adde es zum filter Array
         return true
-        // Wenn das aktuelle Datums Jahr gleich und wir beim letzten Eintrag sind,
-        // adde es zum Array und setzte currentYear
-      } else if (
+      }
+
+      // Wenn das aktuelle Datums Jahr gleich ist und wir beim letzten Eintrag sind:
+      else if (
         new Date(termin.node.date).getFullYear() === currentYear &&
         index === array.length - 1
       ) {
-        currentYear = lastFilterdOutYear
+        // - adde currentYear zum filterdYears Array
+        filterdYears = [...filterdYears, currentYear]
+        // - setzte lastFilterdOutYear zum CurrentYear, wenn lastFilterdOutYear nicht in filterdYears Array ist
+        filterdYears.find(lastFilterdOutYear)
+          ? (currentYear = undefined)
+          : (currentYear = lastFilterdOutYear)
+        // - adde es zum filter Array
         return true
-        // Ansonsten schau ob wir am ende sind und trage dann das volle Jahr als currentYear ein
-      } else if (index === array.length - 1) {
-        currentYear = new Date(termin.node.date).getFullYear()
+      }
+
+      // Ansonsten schau ob wir am ende sind und trage dann das volle Jahr des Elemts als currentYear ein, wenn dieses Jahr nicht in filterdYears Array ist
+      else if (index === array.length - 1) {
+        filterdYears.find(`${new Date(termin.node.date).getFullYear()}`)
+          ? (currentYear = undefined)
+          : (currentYear = new Date(termin.node.date).getFullYear())
         return false
       }
 
@@ -35,30 +55,20 @@ const groupDates = termine => {
       return false
     })
 
-    console.log(filter)
     if (filter.length !== 0) {
       groupedTermine = [...groupedTermine, filter]
+    } else {
+      filterTermine()
     }
-
     return filter
   }
 
-  console.log(filterTermine())
-
-  if (filterTermine() === []) {
-    filterTermine()
-  } else {
-    groupedTermine = [...groupedTermine, filterTermine()]
-  }
-
-  console.log(groupedTermine)
+  filterTermine()
   return groupedTermine
 }
 
 const Termine = (data, props) => {
-  console.log(data)
   const [termine] = useState(groupDates(data.data.termine))
-  console.log(termine)
 
   return (
     <React.Fragment>

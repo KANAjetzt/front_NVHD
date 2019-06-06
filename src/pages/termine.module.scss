@@ -18,5 +18,9 @@ $color-secondary: var(--color-secondary);
   align-self: flex-start;
   width: 93vw;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: 1fr;
+
+  @media only screen and (min-width: $bp-smallest) {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  }
 }

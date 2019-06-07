@@ -59,7 +59,7 @@ export const query = graphql`
 
 const kontaktPage = ({ data, ...props }) => {
   return (
-    <Layout currentPath={props.location.pathname}>
+    <Layout currentHref={props.location.href}>
       <section className={styles.pageKontakt}>
         <SEO
           title="Kontakt"

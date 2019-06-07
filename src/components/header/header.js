@@ -1,18 +1,36 @@
 import { Link, StaticQuery, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
+import Img from 'gatsby-image'
 import styles from './header.module.scss'
 import Navigation from '../navigation/navigation'
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props)
+    this.btnRef = React.createRef()
+  }
   state = {
     showMenu: false,
+    closeAnimation: false,
   }
 
   toggleMenu = () => {
     this.setState({
-      showMenu: !this.state.showMenu,
+      closeAnimation: !this.state.closeAnimation,
     })
+    // wenn die NAV nicht angezeigt wird kein delay von 200ms anonsten schon um die animation ab zu spielen
+    if (!this.state.showMenu) {
+      this.setState({
+        showMenu: !this.state.showMenu,
+      })
+    } else {
+      setTimeout(() => {
+        this.setState({
+          showMenu: !this.state.showMenu,
+        })
+      }, 200)
+    }
   }
 
   render() {
@@ -21,12 +39,9 @@ class Header extends React.Component {
         <div className={styles.logoBox}>
           <h1 style={{ margin: 0 }}>
             <Link to="/">
-              <img
-                key={`${this.props.data.logo.edges[0].node.id}-image`}
+              <Img
                 className={styles.logo}
-                src={`https://cdn.sanity.io/${
-                  this.props.data.logo.edges[0].node.logo.asset.path
-                }`}
+                fluid={this.props.data.logo.edges[0].node.logo.asset.fluid}
                 alt={this.props.siteTitle}
               />
             </Link>
@@ -39,20 +54,27 @@ class Header extends React.Component {
           type="button"
           aria-label="Menu"
           aria-controls="navigation"
+          ref={this.btnRef}
         >
           <span
             className={
-              this.state.showMenu
+              this.state.closeAnimation
                 ? styles.burgerNavIconOpen
                 : styles.burgerNavIconClosed
             }
           />
         </button>
-        <Navigation
-          showMenu={this.state.showMenu}
-          type={'header'}
-          currentPath={this.props.currentPath}
-        />
+
+        {this.state.showMenu && (
+          <Navigation
+            showMenu={this.state.showMenu}
+            closeAnimation={this.state.closeAnimation}
+            toggleMenu={this.toggleMenu}
+            currentHref={this.props.currentHref}
+            type={'header'}
+            exceptionRef={this.btnRef}
+          />
+        )}
       </header>
     )
   }
@@ -70,6 +92,9 @@ export default props => (
               logo {
                 asset {
                   path
+                  fluid(maxWidth: 200) {
+                    ...GatsbySanityImageFluid
+                  }
                 }
               }
             }

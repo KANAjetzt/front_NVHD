@@ -9,10 +9,9 @@ $base-font: var(--base-font);
 
 .btn {
   display: inline-block;
-  width: 90%;
   max-width: 35rem;
   border: none;
-  padding: 1.25rem 2rem;
+  padding: 1.25rem 4.5rem;
   margin: 4rem auto 0 auto;
   background: $color-cta;
   cursor: pointer;
@@ -42,6 +41,7 @@ $base-font: var(--base-font);
   }
 
   &Text {
+    align-self: center;
     text-decoration: none;
     text-align: center;
     color: rgba(255, 255, 255, 0.75);

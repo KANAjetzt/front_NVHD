@@ -31,7 +31,7 @@ export const query = graphql`
 
 const dorffasnetPage = ({ data, ...props }) => {
   return (
-    <Layout currentPath={props.location.pathname}>
+    <Layout currentHref={props.location.href}>
       <SEO
         title="Dorffasnet"
         keywords={[

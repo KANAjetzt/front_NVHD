@@ -9,6 +9,9 @@ $color-secondary: var(--color-secondary);
     padding: 0;
   }
 
-  div {
+  > div {
+    padding: 0;
+    margin: 0;
+    max-width: unset;
   }
 }

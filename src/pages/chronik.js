@@ -23,10 +23,10 @@ export const query = graphql`
 const chronikPage = ({ data, ...props }) => {
   return (
     <section className={styles.chronikPage}>
-      <Layout currentPath={props.location.pathname}>
+      <Layout currentHref={props.location.href}>
         <SEO title="Chronik" keywords={[`Chronik`, `Geschichte`, `Gründung`]} />
         <h2 className={styles.heading}>
-          Unsere <br />
+          unsere <br />
           <span>Geschichte</span>
         </h2>
         <div className={styles.text}>

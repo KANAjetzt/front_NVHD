@@ -6,15 +6,21 @@ $color-secondary: var(--color-secondary);
   font-size: 9.4rem;
 }
 
-.termine {
-  margin-left: 2rem;
-}
-
 .sectionTermine {
   background-color: $color-secondary;
+
+  > div {
+    margin: unset;
+  }
 }
 
 .content {
   align-self: flex-start;
   width: 93vw;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media only screen and (min-width: $bp-smallest) {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  }
 }

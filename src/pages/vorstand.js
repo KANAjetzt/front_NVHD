@@ -55,7 +55,7 @@ export const query = graphql`
 
 const vorstandPage = ({ data, ...props }) => {
   return (
-    <Layout currentPath={props.location.pathname}>
+    <Layout currentHref={props.location.href}>
       <section className={styles.pageVorstand}>
         <SEO
           title="Vorstand"
@@ -69,7 +69,7 @@ const vorstandPage = ({ data, ...props }) => {
           ]}
         />
         <h2>
-          Der <br />
+          der <br />
           <span>Vorstand</span>
         </h2>
 

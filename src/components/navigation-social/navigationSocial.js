@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import Facebook from './../svg/facebook'
 import Instagram from './../svg/instagram'
 import Twitter from './../svg/twitter'
@@ -11,24 +10,24 @@ class NavigationSocial extends React.Component {
     return (
       <ul className={styles.socialGrid}>
         <li>
-          <Link to="/kontakt">
+          <a href="https://www.facebook.com/heuliecher/">
             <Facebook fill={'#f0be2a'} />
-          </Link>
+          </a>
         </li>
         <li>
-          <Link to="/kontakt">
+          <a href="https://www.instagram.com/heuliecher">
             <Instagram fill={'#f0be2a'} />
-          </Link>
+          </a>
         </li>
         <li>
-          <Link to="/kontakt">
+          <a href="https://twitter.com/heuliecher">
             <Twitter fill={'#f0be2a'} />
-          </Link>
+          </a>
         </li>
         <li>
-          <Link to="/kontakt">
+          <a href="https://www.youtube.com/channel/UCkkbZhBC039H2zRYIszzSbw">
             <Youtube fill={'#f0be2a'} />
-          </Link>
+          </a>
         </li>
       </ul>
     )

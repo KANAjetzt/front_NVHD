@@ -1,61 +1,86 @@
-import React, { Component } from 'react'
+import React, { useRef } from 'react'
 import Img from 'gatsby-image'
+import { Link } from 'gatsby'
 import styles from './terminDetailed.module.scss'
 import GoogleMap from '../googleMap/googleMap'
-import Datum from '../datum/datum'
 import BlockContent from '../block-content/index'
 import { getDate, getTime, getWeekDay } from '../../lib/datumUhrzeit'
+import CalenderSVG from '../svg/calendar'
+import ClockSVG from '../svg/clock'
+import LocationSVG from '../svg/location'
+import WideArrowSVG from '../svg/wideArrow'
+import { useSpring, animated } from 'react-spring'
+import { useOnScreen } from '../../lib/useOnScreen'
 
-export default class Termin extends Component {
-  render() {
-    console.log(this.props)
-    const {
-      date,
-      id,
-      image,
-      location,
-      locationName,
-      title,
-      _rawDescription,
-    } = this.props.stuff.allSanityTermin.edges[0].node
+const TerminDetailed = props => {
+  const {
+    date,
+    dateText,
+    image,
+    location,
+    locationName,
+    title,
+    _rawDescription,
+  } = props.stuff.allSanityTermin.edges[0].node
 
-    console.log(getDate(date))
-    console.log(getTime(date))
-    console.log(getWeekDay(date))
-    return (
-      <section className={styles.content}>
-        <section className={styles.hero}>
-          <h2 className={styles.title}>{title}</h2>
-          <div className={styles.datum}>
-            <p>
-              {getWeekDay(date)}, {getDate(date)}
-            </p>
-          </div>
-          <div className={styles.uhrzeit}>
-            {' '}
-            <p> {getTime(date)} </p>{' '}
-          </div>
-          <Img className={styles.img} fluid={image.asset.fluid} />
-        </section>
-        <section>
-          <BlockContent blocks={_rawDescription} />
-        </section>
-        <section>
-          <ul className={styles.quickView}>
-            <li className={styles.quickViewTitle}>{title}</li>
-            <li className={styles.quickViewDate}>
-              Datum: {getWeekDay(date)}, {getDate(date)}
-            </li>
-            <li className={styles.quickViewTime}>Zeit: {getTime(date)}</li>
-            <li className={styles.quickViewLokationName}>
-              Ort: {locationName}
-            </li>
-          </ul>
-        </section>
-        <section className={styles.googleMap}>
-          <GoogleMap initialCenter={location} markerTitle={locationName} />
-        </section>
+  const spring = useSpring({
+    config: {},
+    transform: 'translateX(0)',
+    from: { transform: 'translateX(-100%)' },
+  })
+
+  const ref = useRef()
+
+  const onScreen = useOnScreen(ref)
+
+  return (
+    <animated.section className={styles.content} style={spring}>
+      <section className={styles.description}>
+        <BlockContent blocks={_rawDescription} />
       </section>
-    )
-  }
+      <div className={onScreen ? styles.stickyHeroInPlace : styles.stickyHero}>
+        <Link to="/termine">
+          <section className={styles.hero}>
+            <WideArrowSVG fill="#eee" classname={styles.backArrow} />
+            <h2 className={onScreen ? styles.titleInPlace : styles.title}>
+              {title}
+            </h2>
+            <div className={onScreen ? styles.datumInPlace : styles.datum}>
+              <p>{getDate(date)}</p>
+            </div>
+
+            {image && <Img className={styles.img} fluid={image.asset.fluid} />}
+          </section>
+        </Link>
+      </div>
+      <section className={styles.quickView} ref={ref}>
+        <ul>
+          <li
+            className={
+              onScreen ? styles.quickViewDateInPlace : styles.quickViewDate
+            }
+          >
+            <CalenderSVG fill="#fefefe" />
+            <p>
+              {dateText ? dateText : `${getWeekDay(date)}, ${getDate(date)}`}
+            </p>
+          </li>
+          {date.length > 10 && (
+            <li className={styles.quickViewTime}>
+              <ClockSVG fill="#fefefe" /> <p>{getTime(date)}</p>
+            </li>
+          )}
+
+          <li className={styles.quickViewLokationName}>
+            <LocationSVG fill="#fefefe" /> <p>{locationName}</p>
+          </li>
+        </ul>
+      </section>
+      <section className={styles.googleMap}>
+        <GoogleMap initialCenter={location} markerTitle={locationName} />
+      </section>
+    </animated.section>
+  )
 }
+
+export default TerminDetailed

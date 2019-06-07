@@ -1,0 +1,35 @@
+$color-white: rgb(245, 245, 245);
+
+$BtnThickness: 2px;
+$BtnLengrh: 3rem;
+
+.iconBox {
+  position: relative;
+  width: 30px;
+  height: 55px;
+}
+
+.icon {
+  display: inline-block;
+  border-bottom: $BtnThickness solid $color-white;
+  width: $BtnLengrh;
+
+  transform-origin: top left;
+  transform: rotate(55deg);
+
+  transition: all 0.5s ease-in-out;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: $BtnLengrh;
+    z-index: 2000;
+    border-bottom: $BtnThickness solid $color-white;
+
+    transform-origin: bottom right;
+    transform: rotate(-110deg) translatex($BtnThickness);
+
+    transition: all 0.5s ease-in-out;
+  }
+}

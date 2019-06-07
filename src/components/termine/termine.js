@@ -7,7 +7,6 @@ const groupDates = termine => {
   const newTermine = new Map()
 
   let currentYear = undefined
-
   termine.edges.forEach(termin => {
     const { date } = termin.node
 
@@ -16,20 +15,23 @@ const groupDates = termine => {
       //adde es zu dem key mit dem currentYear value (z.B: 2019)
       newTermine.set(currentYear, [...newTermine.get(currentYear), termin])
     }
+
     // Wenn das FullYear des aktuellen termins nicht gleich ist wie das currentYear:
     else {
       // Update das currentYear mit dem fullYear des aktuellen Termins
       currentYear = new Date(date).getFullYear()
-
       // Adde den termin zu dem key currentYear (z.B. 2020)
       if (newTermine.has(currentYear)) {
         newTermine.set(currentYear, [...newTermine.get(currentYear), termin])
+      } else {
+        newTermine.set(currentYear, [termin])
       }
-      newTermine.set(currentYear, [termin])
     }
   })
-  // mit .values() erhält man ein neues "Iterator Objekt" das man mit Array.from zu einem Array wandeln kann
-  return Array.from(newTermine.values())
+
+  // mit .entries() erhält man ein neues "Iterator Objekt" das man mit Array.from zu einem Array wandeln kann
+  // mit .sort() werden die Termine nach Jahr sortiert, das Jahr ist der 1 Eintrag des Arrays der 2. ist ein Array mit den Terminen
+  return Array.from(newTermine.entries()).sort((a, b) => a[0] - b[0])
 }
 
 const Termine = (data, props) => {
@@ -37,7 +39,7 @@ const Termine = (data, props) => {
   return (
     <React.Fragment>
       {termine.map(year => (
-        <TermineYear data={year} key={year[0].node.id} />
+        <TermineYear data={year[1]} key={year[1][0].node.id} />
       ))}
     </React.Fragment>
   )

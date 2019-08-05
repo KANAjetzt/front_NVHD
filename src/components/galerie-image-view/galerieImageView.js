@@ -99,7 +99,6 @@ export default class galerieImageView extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <React.Fragment>
         <div className={styles.semiHeader}>

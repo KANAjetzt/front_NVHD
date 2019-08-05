@@ -9,6 +9,8 @@ import CalenderSVG from '../svg/calendar'
 import ClockSVG from '../svg/clock'
 import LocationSVG from '../svg/location'
 import WideArrowSVG from '../svg/wideArrow'
+import ArrowRightSVG from '../svg/arrowRight'
+import ArrowLeftSVG from '../svg/arrowLeft'
 import { useSpring, animated } from 'react-spring'
 import { useOnScreen } from '../../lib/useOnScreen'
 
@@ -16,12 +18,16 @@ const TerminDetailed = props => {
   const {
     date,
     dateText,
+    startTime,
+    endTime,
     image,
     location,
     locationName,
     title,
     _rawDescription,
   } = props.stuff.allSanityTermin.edges[0].node
+
+  console.log(startTime, endTime)
 
   const spring = useSpring({
     config: {},
@@ -68,6 +74,26 @@ const TerminDetailed = props => {
           {date.length > 10 && (
             <li className={styles.quickViewTime}>
               <ClockSVG fill="#fefefe" /> <p>{getTime(date)}</p>
+            </li>
+          )}
+          {startTime && (
+            <li className={styles.quickViewStartTime}>
+              <ArrowRightSVG fill="#fefefe" />{' '}
+              <p>
+                {`${startTime
+                  .split(':')
+                  .splice(0, 2)
+                  .join(':')} Uhr`}
+              </p>
+            </li>
+          )}
+          {endTime && (
+            <li className={styles.quickViewEndTime}>
+              <ArrowLeftSVG fill="#fefefe" />{' '}
+              <p>{`${endTime
+                .split(':')
+                .splice(0, 2)
+                .join(':')} Uhr`}</p>
             </li>
           )}
 

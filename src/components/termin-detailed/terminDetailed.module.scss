@@ -153,6 +153,8 @@ $color-tertiary: var(--color-tertiary);
   &Title,
   &Date,
   &Time,
+  &StartTime,
+  &EndTime,
   &LokationName {
     display: flex;
     align-items: center;

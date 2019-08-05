@@ -22,6 +22,8 @@ export const query = graphql`
           id
           date
           dateText
+          startTime
+          endTime
           title
           _rawDescription
           locationName

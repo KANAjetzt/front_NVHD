@@ -2,12 +2,36 @@ import React, { useState } from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import TermineYear from '../termine-year/termineYear'
 
+const prepareDates = termine => {
+  return groupDates(sortDates(filterDates(termine)))
+}
+
+const sortDates = termine => {
+  return termine.sort((a, b) => {
+    return new Date(a.node.date) - new Date(b.node.date)
+  })
+}
+
+const filterDates = termine => {
+  // filter out the dates that are older then 1 Week
+  return termine.filter(termin => {
+    const currentDate = new Date().getTime()
+    const terminDate =
+      new Date(`${termin.node.date}`).getTime() + 1000 * 60 * 60 * 24 * 7 // current Date + 1 Woche
+
+    if (terminDate > currentDate) {
+      return termin
+    }
+    return undefined
+  })
+}
+
 const groupDates = termine => {
   // erstelle ein neues Map
   const newTermine = new Map()
 
   let currentYear = undefined
-  termine.edges.forEach(termin => {
+  termine.forEach(termin => {
     const { date } = termin.node
 
     // Wenn das FullYear des aktuellen termins gleich ist mit dem currentYear:
@@ -35,7 +59,7 @@ const groupDates = termine => {
 }
 
 const Termine = (data, props) => {
-  const [termine] = useState(groupDates(data.data.termine))
+  const [termine] = useState(prepareDates(data.data.termine.edges))
   return (
     <React.Fragment>
       {termine.map(year => (

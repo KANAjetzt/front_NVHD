@@ -21,6 +21,7 @@ const TerminDetailed = props => {
     startTime,
     endTime,
     image,
+    showFullImage,
     location,
     locationName,
     title,

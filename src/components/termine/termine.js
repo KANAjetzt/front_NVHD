@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
 import { graphql, StaticQuery } from 'gatsby'
+
+import styles from './termine.module.scss'
 import TermineYear from '../termine-year/termineYear'
+import TermineFeatured from '../termin-featured/terminFeatured'
+
+const getFeaturedTermine = termine => {
+  return sortDates(filterDates(termine.filter(termin => termin.node.featured)))
+}
 
 const prepareDates = termine => {
   return groupDates(sortDates(filterDates(termine)))
@@ -60,8 +67,25 @@ const groupDates = termine => {
 
 const Termine = (data, props) => {
   const [termine] = useState(prepareDates(data.data.termine.edges))
+  const [featuredTermine] = useState(
+    getFeaturedTermine(data.data.termine.edges)
+  )
+  console.log(featuredTermine)
   return (
     <React.Fragment>
+      <section className={styles.featured}>
+        {featuredTermine.map(termin => (
+          <TermineFeatured
+            key={termin.node.id}
+            terminKey={termin.node.id}
+            date={termin.node.date}
+            dateText={termin.node.dateText}
+            title={termin.node.title}
+            image={termin.node.image}
+            slug={termin.node.slug.current}
+          />
+        ))}
+      </section>
       {termine.map(year => (
         <TermineYear data={year[1]} key={year[1][0].node.id} />
       ))}
@@ -78,10 +102,19 @@ export default props => (
             node {
               id
               date
+              featured
               dateText
               title
               slug {
                 current
+              }
+              image {
+                asset {
+                  path
+                  fluid(maxWidth: 2000) {
+                    ...GatsbySanityImageFluid_noBase64
+                  }
+                }
               }
             }
           }

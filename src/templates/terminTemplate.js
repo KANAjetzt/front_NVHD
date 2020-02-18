@@ -21,6 +21,7 @@ export const query = graphql`
         node {
           id
           date
+          featured
           dateText
           startTime
           endTime
@@ -39,6 +40,7 @@ export const query = graphql`
               }
             }
           }
+          showFullImage
         }
       }
     }

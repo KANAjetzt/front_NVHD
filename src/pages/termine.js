@@ -5,7 +5,7 @@ import Termine from '../components/termine/termine'
 import styles from './termine.module.scss'
 import { useSpring, animated } from 'react-spring'
 
-const terminePage = props => {
+const TerminePage = props => {
   const spring = useSpring({
     transform: 'translateX(0)',
     from: { transform: 'translateX(100%)' },
@@ -23,4 +23,4 @@ const terminePage = props => {
   )
 }
 
-export default terminePage
+export default TerminePage

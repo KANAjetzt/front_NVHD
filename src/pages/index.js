@@ -7,7 +7,7 @@ import ImageCompVereinsfiguren from '../components/image-comp-Vereinsfiguren/ima
 import Termine from '../components/termine/termine'
 import { useSpring, animated } from 'react-spring'
 
-const indexPage = props => {
+const IndexPage = props => {
   const peter = useSpring({
     config: { duration: 200 },
     opacity: 1,
@@ -69,4 +69,4 @@ const indexPage = props => {
   )
 }
 
-export default indexPage
+export default IndexPage

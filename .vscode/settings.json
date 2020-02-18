@@ -1,4 +1,6 @@
 {
     "editor.formatOnSave": true,
-    "debug.node.autoAttach": "on"
+    "debug.node.autoAttach": "on",
+    "cSpell.language": ",de",
+    "cSpell.enabled": false
 }

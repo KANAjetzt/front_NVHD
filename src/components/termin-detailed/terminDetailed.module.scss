@@ -17,6 +17,15 @@ $color-tertiary: var(--color-tertiary);
   h4 {
     color: $color-white;
   }
+
+  &FullImg {
+    composes: content;
+
+    grid-template-rows: min-content min-content min-content min-content minmax(
+        40rem,
+        1fr
+      );
+  }
 }
 
 .description {

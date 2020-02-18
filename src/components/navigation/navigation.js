@@ -5,7 +5,7 @@ import footerStyles from './navigation-footer.module.scss'
 import Heulicher from '../svg/heulicher'
 import useOnClickOutside from '../../lib/useClickOutside'
 
-export default function navigation(props) {
+export default function Navigation(props) {
   const [mounted, setMounted] = useState(false)
 
   const checkStyle = styleClass => {

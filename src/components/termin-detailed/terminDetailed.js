@@ -28,7 +28,7 @@ const TerminDetailed = props => {
     _rawDescription,
   } = props.stuff.allSanityTermin.edges[0].node
 
-  console.log(startTime, endTime)
+  console.log(showFullImage)
 
   const spring = useSpring({
     config: {},
@@ -41,10 +41,21 @@ const TerminDetailed = props => {
   const onScreen = useOnScreen(ref)
 
   return (
-    <animated.section className={styles.content} style={spring}>
+    <animated.section
+      className={showFullImage ? styles.contentFullImg : styles.content}
+      style={spring}
+    >
       <section className={styles.description}>
         <BlockContent blocks={_rawDescription} />
       </section>
+
+      {showFullImage ? (
+        <section>
+          {' '}
+          <Img fluid={image.asset.fluid} />{' '}
+        </section>
+      ) : null}
+
       <div className={onScreen ? styles.stickyHeroInPlace : styles.stickyHero}>
         <Link to="/termine">
           <section className={styles.hero}>

@@ -7,6 +7,8 @@ import ImageCompVereinsfiguren from '../components/image-comp-Vereinsfiguren/ima
 import Termine from '../components/termine/termine'
 import { useSpring, animated } from 'react-spring'
 
+const handleTerminAppearance = () => {}
+
 const IndexPage = props => {
   const peter = useSpring({
     config: { duration: 200 },
@@ -51,6 +53,7 @@ const IndexPage = props => {
 
         <BtnCta link="/termine">alle Termine</BtnCta>
       </section>
+
       <section className={styles.kontaktSection}>
         <h3 className={styles.kontaktSectionH3}>
           Mit <br />

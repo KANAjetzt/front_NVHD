@@ -16,6 +16,7 @@ $IconTranslate: -10px;
   width: 2rem;
   height: 2rem;
   display: flex;
+  align-items: center;
   border: 0;
   background: none;
   outline: none;
@@ -24,6 +25,8 @@ $IconTranslate: -10px;
   text-align: center;
 
   @media only screen and (min-width: $bp-smallest) {
+    display: flex;
+    align-items: center;
     width: 5rem;
     height: 5rem;
   }

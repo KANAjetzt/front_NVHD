@@ -65,11 +65,14 @@ const groupDates = termine => {
   return Array.from(newTermine.entries()).sort((a, b) => a[0] - b[0])
 }
 
-const Termine = (data, props) => {
+const Termine = data => {
   const [termine] = useState(prepareDates(data.data.termine.edges))
   const [featuredTermine] = useState(
     getFeaturedTermine(data.data.termine.edges)
   )
+
+  data.showTermine(termine)
+
   return (
     <React.Fragment>
       <section className={styles.featured}>
@@ -92,34 +95,36 @@ const Termine = (data, props) => {
   )
 }
 
-export default props => (
-  <StaticQuery
-    query={graphql`
-      query termineComponentQuery {
-        termine: allSanityTermin {
-          edges {
-            node {
-              id
-              date
-              featured
-              dateText
-              title
-              slug {
-                current
-              }
-              image {
-                asset {
-                  path
-                  fluid(maxWidth: 2000) {
-                    ...GatsbySanityImageFluid_noBase64
+export default props => {
+  return (
+    <StaticQuery
+      query={graphql`
+        query termineComponentQuery {
+          termine: allSanityTermin {
+            edges {
+              node {
+                id
+                date
+                featured
+                dateText
+                title
+                slug {
+                  current
+                }
+                image {
+                  asset {
+                    path
+                    fluid(maxWidth: 2000) {
+                      ...GatsbySanityImageFluid_noBase64
+                    }
                   }
                 }
               }
             }
           }
         }
-      }
-    `}
-    render={data => <Termine data={data} {...props} />}
-  />
-)
+      `}
+      render={data => <Termine data={data} {...props} />}
+    />
+  )
+}

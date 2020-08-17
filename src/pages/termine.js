@@ -16,7 +16,7 @@ const TerminePage = props => {
       <Layout currentHref={props.location.href}>
         <SEO title="Termine" keywords={[`Termine`, `Fasnet 2019`, `2019`]} />
         <animated.section className={styles.content} style={spring}>
-          <Termine />
+          <Termine someProp={'test'} />
         </animated.section>
       </Layout>
     </section>

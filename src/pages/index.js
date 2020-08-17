@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import styles from './index.module.scss'
@@ -7,13 +7,15 @@ import ImageCompVereinsfiguren from '../components/image-comp-Vereinsfiguren/ima
 import Termine from '../components/termine/termine'
 import { useSpring, animated } from 'react-spring'
 
-const handleTerminAppearance = () => {
-  // Termine section soll nur angezeigt werden wenn welche vorhanden sind
-  // 1) überprüfen ob Termine vorhanden sind
-  // 2) Termin section ein / aus blenden
-}
-
 const IndexPage = props => {
+  const [showTermine, setShowTermine] = useState(true)
+
+  const handleTerminAppearance = termine => {
+    // Termine section soll nur angezeigt werden wenn welche vorhanden sind
+    // 1) überprüfen ob Termine vorhanden sind
+    termine[0] === undefined ? setShowTermine(false) : setShowTermine(true)
+  }
+
   const peter = useSpring({
     config: { duration: 200 },
     opacity: 1,
@@ -52,12 +54,13 @@ const IndexPage = props => {
         <BtnCta link="/figuren">Mehr erfahren</BtnCta>
       </animated.section>
 
-      <section className={styles.terminSection}>
-        <Termine />
+      {showTermine && (
+        <section className={styles.terminSection}>
+          <Termine showTermine={handleTerminAppearance} someProp={'test'} />
 
-        <BtnCta link="/termine">alle Termine</BtnCta>
-      </section>
-
+          <BtnCta link="/termine">alle Termine</BtnCta>
+        </section>
+      )}
       <section className={styles.kontaktSection}>
         <h3 className={styles.kontaktSectionH3}>
           Mit <br />

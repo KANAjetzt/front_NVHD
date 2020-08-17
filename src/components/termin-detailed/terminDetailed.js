@@ -28,8 +28,6 @@ const TerminDetailed = props => {
     _rawDescription,
   } = props.stuff.allSanityTermin.edges[0].node
 
-  console.log(showFullImage)
-
   const spring = useSpring({
     config: {},
     transform: 'translateX(0)',

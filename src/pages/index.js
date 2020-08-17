@@ -7,7 +7,11 @@ import ImageCompVereinsfiguren from '../components/image-comp-Vereinsfiguren/ima
 import Termine from '../components/termine/termine'
 import { useSpring, animated } from 'react-spring'
 
-const handleTerminAppearance = () => {}
+const handleTerminAppearance = () => {
+  // Termine section soll nur angezeigt werden wenn welche vorhanden sind
+  // 1) überprüfen ob Termine vorhanden sind
+  // 2) Termin section ein / aus blenden
+}
 
 const IndexPage = props => {
   const peter = useSpring({

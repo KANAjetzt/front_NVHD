@@ -70,7 +70,6 @@ const Termine = (data, props) => {
   const [featuredTermine] = useState(
     getFeaturedTermine(data.data.termine.edges)
   )
-  console.log(featuredTermine)
   return (
     <React.Fragment>
       <section className={styles.featured}>

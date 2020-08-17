@@ -21,7 +21,6 @@ const checkDate = props => {
 }
 
 const TerminFeatured = props => {
-  console.log(props)
   return (
     <div className={styles.termin}>
       <Link to={`/termine/${props.slug}`}>

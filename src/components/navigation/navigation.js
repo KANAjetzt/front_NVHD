@@ -5,6 +5,14 @@ import footerStyles from './navigation-footer.module.scss'
 import Heulicher from '../svg/heulicher'
 import useOnClickOutside from '../../lib/useClickOutside'
 
+// 🤫
+// <li className={checkStyle('link')}>
+//           <Heulicher className={checkStyle('linkIcon')} fill={'#f0be2a'} />
+//           <Link to="/termine" onClick={e => checkCurrentPath(e)}>
+//             Termine
+//           </Link>
+//         </li>
+
 export default function Navigation(props) {
   const [mounted, setMounted] = useState(false)
 
@@ -63,12 +71,6 @@ export default function Navigation(props) {
           <Heulicher className={checkStyle('linkIcon')} fill={'#f0be2a'} />
           <Link to="/dorffasnet" onClick={e => checkCurrentPath(e)}>
             Dorffasnet
-          </Link>
-        </li>
-        <li className={checkStyle('link')}>
-          <Heulicher className={checkStyle('linkIcon')} fill={'#f0be2a'} />
-          <Link to="/termine" onClick={e => checkCurrentPath(e)}>
-            Termine
           </Link>
         </li>
         <li className={checkStyle('link')}>

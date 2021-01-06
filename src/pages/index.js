@@ -54,6 +54,22 @@ const IndexPage = props => {
         <BtnCta link="/figuren">Mehr erfahren</BtnCta>
       </animated.section>
 
+      <section className={styles.newsSection}>
+        <h3 className={styles.newsSectionH3}>
+          2021 <br />
+          <span className={styles.newsSectionH3Span}>Dreikönigsitzung</span>
+        </h3>
+        <iframe
+          className={styles.ytVideo}
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/Moqq5DcntCs"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </section>
+
       {showTermine && (
         <section className={styles.terminSection}>
           <Termine showTermine={handleTerminAppearance} someProp={'test'} />

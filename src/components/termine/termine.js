@@ -71,7 +71,7 @@ const Termine = data => {
     getFeaturedTermine(data.data.termine.edges)
   )
 
-  data.showTermine(termine)
+  if (typeof data.showTermine === 'function') data.showTermine(termine)
 
   return (
     <React.Fragment>

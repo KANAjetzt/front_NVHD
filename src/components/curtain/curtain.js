@@ -1,15 +1,26 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
 import Countdown from 'react-countdown'
+import YouTube from 'react-youtube'
 import styles from './curtain.module.scss'
 import ImageCompVereinsfiguren from '../image-comp-Vereinsfiguren/imageCompVereinsfiguren'
 
 const Curtain = () => {
   const { width, height } = useWindowSize()
 
-  // const countDownDate = new Date(2021, 1, 12, 20)
-  const countDownDate = Date.now() + 1000 * 2
+  new Date(2021, 1, 12, 20)
+  const [countDownDate, setCountDownDate] = useState(new Date(2021, 1, 12, 20))
+  const [player, setPlayer] = useState(null)
+  const [startPlaying, setStartPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  useEffect(() => {
+    // start playing the video
+    if (player && startPlaying && !isPlaying) {
+      player.playVideo()
+    }
+  }, [player, startPlaying, isPlaying])
 
   const checkCountDown = (
     curtainLeft,
@@ -47,12 +58,35 @@ const Curtain = () => {
       // fade up ytVideo
       ytVideo.style.animationPlayState = 'running'
 
+      // play ytVideo
+      setTimeout(() => {
+        setStartPlaying(true)
+      }, 1000 * 5)
+
       // change z-index of ytVideo
       setTimeout(() => {
         ytVideo.style.zIndex = 200
-      }, 1000 * 8)
+      }, 1000 * 7)
     }, 1000)
   }
+
+  const ytOnReady = e => {
+    setPlayer(e.target)
+  }
+
+  const ytOnPlay = e => {
+    setIsPlaying(true)
+  }
+
+  // useEffect(() => {
+  //   if (player) {
+  //     setTimeout(() => {
+  //       setPlayVideo(true)
+  //       console.log(player)
+  //       player.playVideo()
+  //     }, 1000 * 5)
+  //   }
+  // }, [player])
 
   useEffect(() => {
     const curtainLeft = document.querySelector(`.${styles.left.split(' ')[0]}`)
@@ -106,7 +140,7 @@ const Curtain = () => {
 
     // Function zum triggern eines Events erstellen
     document.onmousemove = getMouseMovePos
-  }, [])
+  }, [player, isPlaying])
 
   return (
     <section className={styles.main}>
@@ -126,15 +160,19 @@ const Curtain = () => {
         <div className={styles.container__glow1}></div>
         <div className={styles.container__glow2}></div>
       </div>
-      <iframe
-        className={styles.ytVideo}
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/Moqq5DcntCs"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+
+      <YouTube
+        containerClassName={styles.ytVideo}
+        videoId="Moqq5DcntCs"
+        opts={{
+          height: '390',
+          width: '640',
+          playerVars: {},
+        }}
+        onReady={ytOnReady}
+        onPlay={ytOnPlay}
+      />
+
       <div className={styles.bg} />
     </section>
   )

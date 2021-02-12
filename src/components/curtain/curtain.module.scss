@@ -318,6 +318,10 @@ $second: #1b2431;
   figcaption {
     display: none;
   }
+
+  span {
+    font-family: var(--base-font), Arial, Helvetica, sans-serif;
+  }
 }
 
 @keyframes blendOut {

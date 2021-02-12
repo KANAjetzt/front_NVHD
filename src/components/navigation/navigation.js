@@ -63,6 +63,12 @@ export default function Navigation(props) {
         </li>
         <li className={checkStyle('link')}>
           <Heulicher className={checkStyle('linkIcon')} fill={'#f0be2a'} />
+          <Link to="/bunterabend" onClick={e => checkCurrentPath(e)}>
+            Bunterabend
+          </Link>
+        </li>
+        <li className={checkStyle('link')}>
+          <Heulicher className={checkStyle('linkIcon')} fill={'#f0be2a'} />
           <Link to="/figuren" onClick={e => checkCurrentPath(e)}>
             Figuren
           </Link>

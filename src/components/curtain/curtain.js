@@ -9,11 +9,18 @@ import ImageCompVereinsfiguren from '../image-comp-Vereinsfiguren/imageCompVerei
 const Curtain = () => {
   const { width, height } = useWindowSize()
 
-  new Date(2021, 1, 12, 20)
+  // new Date(2021, 1, 12, 20)
+  const [canvasWidth, setCanvasWidth] = useState(0)
+  const [canvasHeight, setCanvasHeight] = useState(0)
   const [countDownDate, setCountDownDate] = useState(new Date(2021, 1, 12, 20))
   const [player, setPlayer] = useState(null)
   const [startPlaying, setStartPlaying] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
+
+  useEffect(() => {
+    setCanvasWidth(width)
+    setCanvasHeight(height)
+  }, [width, height])
 
   useEffect(() => {
     // start playing the video
@@ -77,18 +84,9 @@ const Curtain = () => {
   const ytOnPlay = e => {
     setIsPlaying(true)
   }
-
-  // useEffect(() => {
-  //   if (player) {
-  //     setTimeout(() => {
-  //       setPlayVideo(true)
-  //       console.log(player)
-  //       player.playVideo()
-  //     }, 1000 * 5)
-  //   }
-  // }, [player])
-
   useEffect(() => {
+    window.dispatchEvent(new Event('resize'))
+
     const curtainLeft = document.querySelector(`.${styles.left.split(' ')[0]}`)
     const curtainRight = document.querySelector(
       `.${styles.right.split(' ')[0]}`
@@ -144,7 +142,12 @@ const Curtain = () => {
 
   return (
     <section className={styles.main}>
-      <Confetti width={width} height={height} />
+      <Confetti
+        width={canvasWidth}
+        height={canvasHeight}
+        gravity={0.02}
+        wind={-0.002}
+      />
       <div className={styles.curtainOverlay}>
         <div className={styles.curtainContainer}>
           <div className={styles.left}></div>

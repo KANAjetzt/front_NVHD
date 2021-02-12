@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import useWindowSize from 'react-use/lib/useWindowSize'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import styles from './index.module.scss'
@@ -8,7 +9,16 @@ import Termine from '../components/termine/termine'
 import { useSpring, animated } from 'react-spring'
 
 const IndexPage = props => {
+  const { width, height } = useWindowSize()
+
+  const [iFrameWidth, setIFrameWidth] = useState(0)
+  const [iFrameHeight, setIFrameHeight] = useState(0)
   const [showTermine, setShowTermine] = useState(true)
+
+  useEffect(() => {
+    setIFrameWidth(width)
+    setIFrameHeight(height)
+  }, [width, height])
 
   const handleTerminAppearance = termine => {
     // Termine section soll nur angezeigt werden wenn welche vorhanden sind
@@ -57,17 +67,18 @@ const IndexPage = props => {
       <section className={styles.newsSection}>
         <h3 className={styles.newsSectionH3}>
           2021 <br />
-          <span className={styles.newsSectionH3Span}>Dreikönigsitzung</span>
+          <span className={styles.newsSectionH3Span}>Bunterabend</span>
         </h3>
-        <iframe
-          className={styles.ytVideo}
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/Moqq5DcntCs"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+
+        <div className={styles.bunterabend}>
+          <iframe
+            width={iFrameWidth}
+            height={iFrameHeight}
+            src="/bunterabend"
+          ></iframe>
+        </div>
+
+        <BtnCta link="/bunterabend">LOS GEHTS!</BtnCta>
       </section>
 
       {showTermine && (

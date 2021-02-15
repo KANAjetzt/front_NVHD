@@ -9,10 +9,9 @@ import ImageCompVereinsfiguren from '../image-comp-Vereinsfiguren/imageCompVerei
 const Curtain = () => {
   const { width, height } = useWindowSize()
 
-  // new Date(2021, 1, 12, 20)
   const [canvasWidth, setCanvasWidth] = useState(0)
   const [canvasHeight, setCanvasHeight] = useState(0)
-  const [countDownDate, setCountDownDate] = useState(new Date(2021, 1, 12, 20))
+  const [countDownDate, setCountDownDate] = useState(new Date(2021, 1, 16, 18))
   const [player, setPlayer] = useState(null)
   const [startPlaying, setStartPlaying] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -168,8 +167,8 @@ const Curtain = () => {
         containerClassName={styles.ytVideo}
         videoId="V4qf_dEAKKQ"
         opts={{
-          height: '390',
-          width: '640',
+          height: canvasWidth < '640' ? canvasWidth / 1.64 : 390,
+          width: canvasWidth < '640' ? canvasWidth : 640,
           playerVars: {},
         }}
         onReady={ytOnReady}

@@ -165,7 +165,7 @@ const Curtain = () => {
 
       <YouTube
         containerClassName={styles.ytVideo}
-        videoId="V4qf_dEAKKQ"
+        videoId="iKShcTxMBqE"
         opts={{
           height: canvasWidth < '640' ? canvasWidth / 1.64 : 390,
           width: canvasWidth < '640' ? canvasWidth : 640,

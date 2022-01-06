@@ -56,14 +56,14 @@ const IndexPage = props => {
 
       <section className={styles.newsSection}>
         <h3 className={styles.newsSectionH3}>
-          2021 <br />
+          2022 <br />
           <span className={styles.newsSectionH3Span}>Dreikönigsitzung</span>
         </h3>
         <iframe
           className={styles.ytVideo}
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/Moqq5DcntCs"
+          src="https://www.youtube.com/embed/uszlCYsE5t0"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
